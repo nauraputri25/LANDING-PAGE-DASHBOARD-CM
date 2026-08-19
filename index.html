@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Portal Pembelajaran | Sekolah Islam Cendekia Muda</title>
+<meta name="description" content="Portal pembelajaran resmi Sekolah Islam Cendekia Muda - akses materi TK, SD, SMP, dan SMA.">
+
+<!-- ============== Google tag (gtag.js) - Google Analytics 4 ==============
+     Ganti "G-XXXXXXXXXX" di js/data.js (variabel GA_MEASUREMENT_ID)
+     dengan Measurement ID GA4 milik sekolah, lalu hubungkan Property GA4
+     tersebut ke Looker Studio untuk laporan visual di section "Statistik". -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" id="gaScriptTag"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  // gtag('config', ...) dipanggil di bawah setelah GA_MEASUREMENT_ID dari data.js dimuat
+</script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cmBlue: { 50: '#f0f8ff', 100: '#e0f1fe', 200: '#bae3fd', 400: '#38bdf8', 500: '#0088cc', 600: '#0072bc', 700: '#005a96', 800: '#034a79', 900: '#083d63' },
+          cmGreen: { 50: '#f2f9f1', 100: '#e1f3df', 200: '#c2e7be', 400: '#75cf6d', 500: '#52b848', 600: '#3fa336', 700: '#33812a', 800: '#2c6625', 900: '#255421' },
+          cmRed: { 50: '#fef5f4', 100: '#fde8e7', 200: '#fcd5d3', 500: '#e8524a', 600: '#d93b33', 700: '#b72a23' },
+          cmDark: { 50: '#f4f5f6', 100: '#e3e5e8', 200: '#c6cad1', 700: '#3a4049', 800: '#2d323b', 900: '#1e222a', 950: '#14171d' }
+        },
+        fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-cmBlue-100 selection:text-cmBlue-900">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-200/80 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <svg viewBox="0 0 100 110" class="w-9 h-10 sm:w-11 sm:h-12 flex-shrink-0 drop-shadow-sm group-hover:scale-105 transition-transform" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 15 52 C 15 28 34 16 48 12 L 48 98 C 28 98 15 84 15 52 Z" fill="#0088cc"/>
+          <path d="M 85 52 C 85 28 66 16 52 12 L 52 98 C 72 98 85 84 85 52 Z" fill="#52b848"/>
+          <polygon points="50,2 66,16 50,30 34,16" fill="#e8524a"/>
+          <path d="M 28 98 L 28 58 C 28 42 40 32 50 22 C 60 32 72 42 72 58 L 72 98 L 60 98 L 60 58 C 60 48 53 40 50 34 C 47 40 40 48 40 58 L 40 98 Z" fill="#2d323b"/>
+        </svg>
+        <div class="flex flex-col">
+          <span class="font-black text-base sm:text-xl text-cmDark-800 tracking-tight leading-none">Cendekia Muda</span>
+          <span class="text-[9px] sm:text-[11px] font-bold text-slate-500 mt-0.5">A Universal Islamic School</span>
+        </div>
+      </a>
+      <a href="#analytics" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-cmDark-800 hover:bg-cmBlue-600 text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cmGreen-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-cmGreen-500"></span>
+        </span>
+        <span class="hidden sm:inline">Lihat</span> Statistik
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative brand-hero-bg text-white py-12 sm:py-16 px-4 overflow-hidden">
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-wider mb-5 shadow-lg">
+        <span class="w-2 h-2 rounded-full bg-cmRed-500 animate-pulse"></span>
+        <span>Portal Pembelajaran Cendekia Muda</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight mb-3">
+        Satu Portal, Semua Materi Belajar
+      </h1>
+      <p class="text-slate-200 text-xs sm:text-base max-w-2xl mx-auto font-normal leading-relaxed mb-6 opacity-90">
+        Akses cepat menuju Google Site pembelajaran resmi untuk unit TK, SD, SMP, dan SMA
+        Sekolah Islam Cendekia Muda &mdash; cukup satu klik.
+      </p>
+
+      <!-- Statistik ringkas (diisi otomatis oleh main.js) -->
+      <div id="heroStats" class="flex flex-wrap items-center justify-center gap-2 mb-7"></div>
+
+      <div class="max-w-lg mx-auto relative">
+        <div class="relative flex items-center shadow-2xl rounded-2xl">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 text-cmBlue-500 text-sm pointer-events-none"></i>
+          <input type="text" id="globalSearch" placeholder="Cari kelas, level, atau mata pelajaran..." class="w-full pl-11 pr-10 py-3.5 sm:py-4 rounded-2xl bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-cmBlue-400/50 shadow-xl transition-all">
+          <button id="clearSearch" onclick="clearSearchInput()" class="hidden absolute right-3 p-1.5 text-slate-400 hover:text-slate-600 rounded-lg">
+            <i class="fa-solid fa-xmark text-sm"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN PORTAL -->
+  <main id="portal" class="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
+
+    <!-- Tab (diisi otomatis oleh main.js) -->
+    <div class="mb-8 max-w-2xl mx-auto">
+      <div id="tabsRoot" class="flex items-center gap-2 p-1.5 bg-slate-200/80 backdrop-blur-sm rounded-2xl overflow-x-auto no-scrollbar"></div>
+    </div>
+
+    <!-- Konten unit TK/SD/SMP/SMA (diisi otomatis oleh main.js dari data.js) -->
+    <div id="portalContent"></div>
+
+    <!-- Ditampilkan kalau hasil pencarian kosong -->
+    <div id="emptyState" class="flex-col items-center justify-center text-center py-16">
+      <div class="w-16 h-16 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center text-2xl mb-4 mx-auto">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <h3 class="font-extrabold text-slate-700 text-sm sm:text-base">Materi tidak ditemukan</h3>
+      <p class="text-xs text-slate-500 mt-1">Coba kata kunci lain, misalnya nama mata pelajaran atau level kelas.</p>
+    </div>
+
+  </main>
+
+  <!-- ANALYTICS: Google Analytics -> Looker Studio, ditampilkan di halaman home -->
+  <section id="analytics" class="py-12 sm:py-16 bg-cmDark-900 text-white border-t border-cmDark-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-7 gap-3">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cmBlue-500/20 text-cmBlue-400 text-[11px] font-bold tracking-wider mb-2 border border-cmBlue-500/30">
+            <i class="fa-solid fa-chart-line text-xs"></i>
+            <span>Google Analytics &bull; Looker Studio</span>
+          </div>
+          <h2 class="text-xl sm:text-3xl font-extrabold text-white">Statistik Kunjungan Portal</h2>
+          <p class="text-slate-400 text-xs sm:text-sm mt-1">Trafik dan aktivitas pengunjung portal pembelajaran secara real-time.</p>
+        </div>
+        <a id="fullReportLink" href="#" target="_blank" rel="noopener" class="px-4 py-2.5 rounded-xl bg-cmBlue-600 hover:bg-cmBlue-500 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all self-start md:self-auto shadow-md active:scale-95">
+          <span>Buka Laporan Penuh</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+      </div>
+      <div class="rounded-2xl overflow-hidden bg-cmDark-950 border border-cmDark-800 h-[480px] sm:h-[640px] shadow-2xl relative">
+        <div id="lookerSkeleton" class="iframe-skeleton">
+          <div class="flex gap-2"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        </div>
+        <iframe
+          id="lookerFrame"
+          frameborder="0" style="border:0;" allowfullscreen
+          class="w-full h-full absolute inset-0">
+        </iframe>
+      </div>
+      <p class="text-slate-500 text-[11px] mt-3">
+        Laporan ini bersumber dari Google Analytics 4 yang dihubungkan ke Looker Studio.
+        Kalau laporan belum tampil, lihat <code class="text-slate-400">README.md</code> pada folder project untuk cara menghubungkan GA4 ke Looker Studio.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-cmDark-950 text-slate-400 py-8 border-t border-cmDark-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs gap-4">
+      <div class="flex items-center gap-3">
+        <svg viewBox="0 0 100 110" class="w-6 h-7 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 15 52 C 15 28 34 16 48 12 L 48 98 C 28 98 15 84 15 52 Z" fill="#0088cc"/>
+          <path d="M 85 52 C 85 28 66 16 52 12 L 52 98 C 72 98 85 84 85 52 Z" fill="#52b848"/>
+          <polygon points="50,2 66,16 50,30 34,16" fill="#e8524a"/>
+          <path d="M 28 98 L 28 58 C 28 42 40 32 50 22 C 60 32 72 42 72 58 L 72 98 L 60 98 L 60 58 C 60 48 53 40 50 34 C 47 40 40 48 40 58 L 40 98 Z" fill="#ffffff"/>
+        </svg>
+        <div class="flex flex-col">
+          <span class="font-bold text-white text-xs sm:text-sm">Portal Pembelajaran Cendekia Muda</span>
+          <span class="text-[10px] text-slate-400">Jl. Puri Ayu Pratama No.17, Arcamanik, Bandung &bull; (+62) 821-2102-2114</span>
+        </div>
+      </div>
+      <p class="text-slate-500 text-[11px] text-center sm:text-right">&copy; <span id="year"></span> Sekolah Islam Cendekia Muda. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Toast notifikasi saat kartu materi diklik -->
+  <div id="redirectToast" class="px-4 py-2.5 rounded-xl bg-cmDark-900 text-white text-xs font-bold shadow-2xl flex items-center gap-2 border border-white/10">
+    <i class="fa-solid fa-arrow-up-right-from-square text-cmBlue-400"></i>
+    <span id="redirectToastText">Membuka Google Site...</span>
+  </div>
+
+  <!-- Tombol scroll to top -->
+  <button id="scrollTopBtn" aria-label="Kembali ke atas" class="w-11 h-11 rounded-full bg-cmBlue-600 hover:bg-cmBlue-500 text-white shadow-xl flex items-center justify-center active:scale-90 transition-transform">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Data & logika portal -->
+  <script src="js/data.js"></script>
+  <script>
+    // Selesaikan setup gtag dengan Measurement ID dari data.js
+    gtag('config', GA_MEASUREMENT_ID, { send_page_view: true });
+    document.getElementById('gaScriptTag').src =
+      'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
