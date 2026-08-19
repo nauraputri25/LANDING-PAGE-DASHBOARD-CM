@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -36,7 +36,7 @@
           cmRed: { 50: '#fef5f4', 100: '#fde8e7', 200: '#fcd5d3', 500: '#e8524a', 600: '#d93b33', 700: '#b72a23' },
           cmDark: { 50: '#f4f5f6', 100: '#e3e5e8', 200: '#c6cad1', 700: '#3a4049', 800: '#2d323b', 900: '#1e222a', 950: '#14171d' }
         },
-        fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+        fontFamily: { sans: ['Outfit', 'sans-serif'] }
       }
     }
   }
@@ -44,22 +44,16 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-cmBlue-100 selection:text-cmBlue-900">
 
+<!-- LOGO: Geser ke kiri (+1cm) & turun ke bawah (+1cm) -->
+<a href="#" 
+   class="fixed top-10 left-[calc(25%-var(--navbar-offset,0px))] -translate-x-1/2 -translate-y-1/2 ml-[-12.5rem] z-[100] hover:scale-105 transition-transform drop-shadow-lg block">
+  <img src="image/logo_cm.png" alt="Logo Cendekia Muda" class="h-12 w-auto object-contain">
+</a>
+
   <!-- NAVBAR -->
-  <header class="sticky top-0 z-50 glass-nav border-b border-slate-200/80 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <svg viewBox="0 0 100 110" class="w-9 h-10 sm:w-11 sm:h-12 flex-shrink-0 drop-shadow-sm group-hover:scale-105 transition-transform" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 15 52 C 15 28 34 16 48 12 L 48 98 C 28 98 15 84 15 52 Z" fill="#0088cc"/>
-          <path d="M 85 52 C 85 28 66 16 52 12 L 52 98 C 72 98 85 84 85 52 Z" fill="#52b848"/>
-          <polygon points="50,2 66,16 50,30 34,16" fill="#e8524a"/>
-          <path d="M 28 98 L 28 58 C 28 42 40 32 50 22 C 60 32 72 42 72 58 L 72 98 L 60 98 L 60 58 C 60 48 53 40 50 34 C 47 40 40 48 40 58 L 40 98 Z" fill="#2d323b"/>
-        </svg>
-        <div class="flex flex-col">
-          <span class="font-black text-base sm:text-xl text-cmDark-800 tracking-tight leading-none">Cendekia Muda</span>
-          <span class="text-[9px] sm:text-[11px] font-bold text-slate-500 mt-0.5">A Universal Islamic School</span>
-        </div>
-      </a>
-      <a href="#analytics" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-cmDark-800 hover:bg-cmBlue-600 text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95">
+  <header id="siteNav" class="floating-nav">
+    <div class="px-5 sm:px-6 h-10 flex items-center justify-end">
+      <a href="#analytics" id="navBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cmDark-800 hover:bg-cmBlue-600 text-white font-bold text-xs shadow-md transition-all active:scale-95">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cmGreen-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-cmGreen-500"></span>
@@ -70,8 +64,9 @@
   </header>
 
   <!-- HERO -->
-  <section class="relative brand-hero-bg text-white py-12 sm:py-16 px-4 overflow-hidden">
-    <div class="max-w-4xl mx-auto text-center relative z-10">
+  <section class="relative brand-hero-bg text-white overflow-hidden">
+    <canvas id="meshCanvas" class="absolute inset-0 w-full h-full" style="opacity:.55"></canvas>
+    <div class="max-w-4xl mx-auto text-center relative z-10 py-12 sm:py-16 px-4" style="padding-top: calc(3.5rem + 2.5rem);">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-wider mb-5 shadow-lg">
         <span class="w-2 h-2 rounded-full bg-cmRed-500 animate-pulse"></span>
         <span>Portal Pembelajaran Cendekia Muda</span>
@@ -184,6 +179,51 @@
   <button id="scrollTopBtn" aria-label="Kembali ke atas" class="w-11 h-11 rounded-full bg-cmBlue-600 hover:bg-cmBlue-500 text-white shadow-xl flex items-center justify-center active:scale-90 transition-transform">
     <i class="fa-solid fa-arrow-up"></i>
   </button>
+
+  <!-- Navbar scroll behaviour -->
+  <script>
+  (function(){
+    const nav = document.getElementById('siteNav');
+    const hero = document.querySelector('.brand-hero-bg');
+    function onScroll(){
+      const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+      nav.classList.toggle('scrolled', heroBottom <= 80);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+  </script>
+
+  <!-- Mesh gradient animation -->
+  <script>
+  (function(){
+    const c = document.getElementById('meshCanvas');
+    if(!c) return;
+    const ctx = c.getContext('2d');
+    const pts = [
+      {x:.15,y:.2,vx:.0003,vy:.0002,r:'0,136,204'},
+      {x:.85,y:.3,vx:-.0002,vy:.0003,r:'82,184,72'},
+      {x:.5,y:.85,vx:.0002,vy:-.0003,r:'232,82,74'},
+      {x:.5,y:.5,vx:-.0001,vy:.0002,r:'0,114,188'},
+    ];
+    function resize(){ c.width=c.offsetWidth; c.height=c.offsetHeight; }
+    resize(); window.addEventListener('resize', resize);
+    function draw(){
+      const w=c.width, h=c.height;
+      ctx.clearRect(0,0,w,h);
+      pts.forEach(p=>{
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>1) p.vx*=-1;
+        if(p.y<0||p.y>1) p.vy*=-1;
+        const g=ctx.createRadialGradient(p.x*w,p.y*h,0,p.x*w,p.y*h,w*.55);
+        g.addColorStop(0,`rgba(${p.r},.45)`);
+        g.addColorStop(1,`rgba(${p.r},0)`);
+        ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+  </script>
 
   <!-- Data & logika portal -->
   <script src="js/data.js"></script>
