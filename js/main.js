@@ -1,8 +1,3 @@
-/**
- * PORTAL PEMBELAJARAN SEKOLAH ISLAM CENDEKIA MUDA
- * Core SPA Router & Dynamic Component Rendering Engine
- */
-
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initial State & Elements Setup
   const currentYearSpan = document.getElementById('year');

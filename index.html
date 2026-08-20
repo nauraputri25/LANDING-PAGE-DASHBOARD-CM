@@ -161,7 +161,7 @@
         border-radius: 10px;
       }
       .hero {
-        min-height: 700px;
+        min-height: 630px;
         background: linear-gradient(155deg, #e6f3ff, #f8fbff 65%, #f5f8fc);
         position: relative;
         overflow: hidden;
@@ -327,34 +327,205 @@
         background: #dce7f0;
       }
       .level-tabs {
-        background: #e8eff5;
-        border: 1px solid #d6e3ec;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        width: min(100%, 720px);
+        margin: 0 auto;
       }
       .level-tab {
-        color: #71869a;
-        transition: 0.25s;
+        position: relative;
+        min-height: 128px;
+        overflow: hidden;
+        border: 1px solid #d6e3ec;
+        border-radius: 18px;
+        background: linear-gradient(145deg, #fff, #eef7fb);
+        color: var(--ink);
+        box-shadow: 0 8px 18px rgba(35, 80, 116, 0.08);
+        transition: transform 0.25s ease, border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .level-tab::after {
+        content: "";
+        position: absolute;
+        right: -18px;
+        bottom: -28px;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: var(--level-color, var(--mint));
+        opacity: 0.18;
+      }
+      .level-tab:hover {
+        transform: translateY(-4px);
+        border-color: var(--level-color, var(--mint));
+        box-shadow: 0 14px 26px rgba(35, 80, 116, 0.14);
       }
       .level-tab.active {
-        background: #fff;
-        color: var(--ink);
-        box-shadow: 0 6px 16px rgba(35, 80, 116, 0.11);
+        border-color: var(--level-color, var(--mint));
+        background: linear-gradient(145deg, #fff, var(--level-soft, #eaf8f3));
+        box-shadow: 0 14px 28px rgba(35, 80, 116, 0.16);
+      }
+      .level-tab img {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        width: 96px;
+        height: 68px;
+        object-fit: contain;
+        transform: translateX(-50%);
+        transition: transform 0.25s ease;
+      }
+      .level-tab:hover img,
+      .level-tab.active img {
+        transform: translateX(-50%) scale(1.08);
+      }
+      .level-tab-label {
+        position: absolute;
+        right: 12px;
+        bottom: 10px;
+        z-index: 1;
+        font-family: "Outfit", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .level-tab-caption {
+        position: absolute;
+        left: 12px;
+        bottom: 10px;
+        z-index: 1;
+        color: #71869a;
+        font-size: 0.55rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
       .material {
+        position: relative;
+        overflow: hidden;
+        padding: 0 !important;
         background: #fff;
         border: 1px solid #e1eaf1;
-        box-shadow: 0 10px 22px rgba(40, 83, 116, 0.055);
-        transition: 0.28s;
+        box-shadow: 0 12px 26px rgba(40, 83, 116, 0.08);
+        transition:
+          transform 0.28s ease,
+          border-color 0.28s ease,
+          box-shadow 0.28s ease;
         cursor: pointer;
       }
       .material:hover {
-        transform: translateY(-6px);
-        border-color: #93dfc3;
-        box-shadow: 0 18px 32px rgba(40, 83, 116, 0.13);
+        transform: translateY(-7px);
+        border-color: #8ddfc2;
+        box-shadow: 0 20px 38px rgba(40, 83, 116, 0.16);
+      }
+      .material-cover {
+        position: relative;
+        height: 142px;
+        overflow: hidden;
+        background: #dfeaf3;
+      }
+      .material-cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(22, 50, 79, 0.02) 20%,
+          rgba(22, 50, 79, 0.68) 100%
+        );
+      }
+      .material-cover img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.45s ease;
+      }
+      .material:hover .material-cover img {
+        transform: scale(1.06);
+      }
+      .material-level {
+        position: absolute;
+        left: 16px;
+        bottom: 14px;
+        z-index: 1;
+        color: #fff;
+        font-family: "Outfit", sans-serif;
+        font-size: 1.45rem;
+        font-weight: 700;
+        line-height: 1;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.24);
+      }
+      .material-body {
+        padding: 20px;
+      }
+      .material-icon {
+        display: grid;
+        width: 46px;
+        height: 46px;
+        place-items: center;
+        border-radius: 16px;
+        font-size: 1.1rem;
+      }
+      .material-tag {
+        margin-top: 18px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        line-height: 1.5;
+        text-transform: uppercase;
+      }
+      .material-title {
+        margin-top: 4px;
+        font-family: "Outfit", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.1;
+      }
+      .material-description {
+        margin-top: 8px;
+        color: #71869a;
+        font-size: 12px;
+        line-height: 1.65;
+      }
+      .material-action {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 18px;
+        padding-top: 14px;
+        border-top: 1px solid #edf2f6;
+        color: #71869a;
+        font-size: 10px;
+        font-weight: 700;
+      }
+      .material-action i {
+        color: var(--mint);
       }
       .analytics {
         background: linear-gradient(180deg, #f5f8fc, #edf8f5);
         border-radius: 38px 38px 0 0;
         color: var(--ink);
+      }
+      .youtube-section {
+        background: linear-gradient(135deg, #fff1f1, #f5f8fc 56%, #eafaf4);
+      }
+      .youtube-panel {
+        background: #fff;
+        border: 1px solid #f3d6d6;
+        box-shadow: 0 20px 42px rgba(150, 72, 72, 0.1);
+      }
+      .youtube-mark {
+        display: grid;
+        width: 72px;
+        height: 52px;
+        place-items: center;
+        border-radius: 16px;
+        background: #ff3d3d;
+        color: #fff;
+        font-size: 1.65rem;
+        box-shadow: 0 12px 22px rgba(255, 61, 61, 0.25);
       }
       .analytics-window {
         background: rgba(255, 255, 255, 0.82);
@@ -442,10 +613,11 @@
       }
       @media (max-width: 640px) {
         .hero {
-          min-height: 650px;
+          min-height: auto;
         }
         .hero-content {
-          padding-top: 145px;
+          padding-top: 125px;
+          padding-bottom: 64px;
         }
         .hero-board {
           display: block;
@@ -462,6 +634,27 @@
         }
         .nav-action {
           padding: 0.65rem 0.75rem;
+        }
+        .level-tabs {
+          gap: 8px;
+        }
+        .level-tab {
+          min-height: 104px;
+        }
+        .level-tab img {
+          top: 8px;
+          width: 78px;
+          height: 56px;
+        }
+        .level-tab-label {
+          right: 8px;
+          bottom: 8px;
+          font-size: 0.78rem;
+        }
+        .level-tab-caption {
+          left: 8px;
+          bottom: 8px;
+          font-size: 0.45rem;
         }
         .analytics {
           border-radius: 28px 28px 0 0;
@@ -635,35 +828,48 @@
     </header>
     <main id="library" class="relative mx-auto max-w-6xl px-5">
       <section
-        class="relative z-10 -mt-9 flex flex-col gap-5 rounded-[28px] border border-white bg-white/90 p-5 shadow-xl shadow-slate-200/60 backdrop-blur sm:flex-row sm:items-center sm:justify-between sm:px-7"
+        class="relative z-10 -mt-9 flex flex-col items-center gap-5 rounded-[28px] border border-white bg-white/90 p-5 shadow-xl shadow-slate-200/60 backdrop-blur sm:px-7"
       >
-        <div>
-          <p class="text-[10px] font-bold uppercase tracking-[.2em] text-blue">
-            Learning library
-          </p>
-          <h2 class="display mt-1 text-2xl font-bold">Pilih perjalananmu.</h2>
-        </div>
-        <div class="level-tabs flex w-fit rounded-[18px] p-1.5">
+        <div class="level-tabs" aria-label="Pilih unit pendidikan">
           <button
-            class="level-tab active rounded-[14px] px-5 py-3 text-sm font-bold"
+            class="level-tab active"
             data-level="TK"
+            style="--level-color: #ff7d7d; --level-soft: #fff0f0"
+            aria-label="Pilih unit TK"
           >
-            TK</button
+            <img src="image/logo_cm.png" alt="Logo Sekolah Cendekia Muda TK" />
+            <span class="level-tab-caption">Unit pendidikan</span>
+            <span class="level-tab-label" style="color: #e35f5f">TK</span>
+          </button
           ><button
-            class="level-tab rounded-[14px] px-5 py-3 text-sm font-bold"
+            class="level-tab"
             data-level="SD"
+            style="--level-color: #4d8df7; --level-soft: #edf4ff"
+            aria-label="Pilih unit SD"
           >
-            SD</button
+            <img src="image/logo_cm.png" alt="Logo Sekolah Cendekia Muda SD" />
+            <span class="level-tab-caption">Unit pendidikan</span>
+            <span class="level-tab-label" style="color: #3676d9">SD</span>
+          </button
           ><button
-            class="level-tab rounded-[14px] px-5 py-3 text-sm font-bold"
+            class="level-tab"
             data-level="SMP"
+            style="--level-color: #55cda1; --level-soft: #eafaf4"
+            aria-label="Pilih unit SMP"
           >
-            SMP</button
+            <img src="image/logo_cm.png" alt="Logo Sekolah Cendekia Muda SMP" />
+            <span class="level-tab-caption">Unit pendidikan</span>
+            <span class="level-tab-label" style="color: #2a9e78">SMP</span>
+          </button
           ><button
-            class="level-tab rounded-[14px] px-5 py-3 text-sm font-bold"
+            class="level-tab"
             data-level="SMA"
+            style="--level-color: #16324f; --level-soft: #edf1f5"
+            aria-label="Pilih unit SMA"
           >
-            SMA
+            <img src="image/logo_cm.png" alt="Logo Sekolah Cendekia Muda SMA" />
+            <span class="level-tab-caption">Unit pendidikan</span>
+            <span class="level-tab-label" style="color: #16324f">SMA</span>
           </button>
         </div>
       </section>
@@ -690,6 +896,37 @@
         </p>
       </section>
     </main>
+    <section id="youtube" class="youtube-section px-5 py-16 sm:px-8">
+      <div class="mx-auto max-w-6xl">
+        <div class="youtube-panel flex flex-col gap-6 rounded-[30px] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div class="flex items-center gap-5">
+            <span class="youtube-mark" aria-hidden="true">
+              <i class="fa-brands fa-youtube"></i>
+            </span>
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-coral">
+                YouTube sekolah
+              </p>
+              <h2 class="display mt-1 text-2xl font-bold">
+                Lihat cerita dan aktivitas Cendekia Muda.
+              </h2>
+              <p class="mt-2 max-w-xl text-xs leading-6 text-slate-500">
+                Temukan video kegiatan, pembelajaran, dan kabar terbaru sekolah.
+              </p>
+            </div>
+          </div>
+          <a
+            class="flex shrink-0 items-center justify-center gap-2 rounded-2xl bg-[#ff3d3d] px-5 py-3 text-xs font-bold text-white transition hover:bg-[#d92f2f]"
+            href="https://www.youtube.com/results?search_query=Sekolah+Islam+Cendekia+Muda"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Buka YouTube
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+      </div>
+    </section>
     <section id="analytics" class="analytics px-5 py-16 sm:px-8">
       <div class="mx-auto max-w-6xl">
         <div
@@ -968,6 +1205,12 @@
         toastText = document.getElementById("toastText"),
         photoDeck = document.getElementById("photoDeck");
       let active = "TK";
+      const levelImages = {
+        TK: "image/tk3.jpg",
+        SD: "image/sd3.jpg",
+        SMP: "image/smp1.jpg",
+        SMA: "image/sma2.jpg",
+      };
       function render() {
         const data = curriculum[active],
           query = input.value.trim().toLowerCase();
@@ -982,7 +1225,29 @@
             card = document.createElement("article");
           card.className = "material fade rounded-[24px] p-5";
           card.style.animationDelay = `${index * 0.06}s`;
-          card.innerHTML = `<div class="flex items-start justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-${color}/12 text-xl text-${color}"><i class="fa-solid ${icon}"></i></span><span class="rounded-full bg-slate-50 px-2.5 py-1 text-[10px] font-bold text-slate-400">${active}</span></div><p class="mt-7 text-[10px] font-bold uppercase tracking-widest text-${color}">${tag}</p><h4 class="display mt-1 text-xl font-bold">${name}</h4><p class="mt-2 text-xs leading-5 text-slate-500">${desc}</p><div class="mt-5 border-t border-slate-100 pt-4 text-[10px] font-semibold text-slate-400"><i class="fa-solid fa-play mr-1 text-${color}"></i>Mulai belajar</div>`;
+          card.innerHTML = `
+            <div class="material-cover">
+              <img src="${levelImages[active]}" alt="Kegiatan belajar jenjang ${active}" />
+              <span class="material-level">${active}</span>
+            </div>
+            <div class="material-body">
+              <div class="flex items-start justify-between gap-3">
+                <span class="material-icon bg-${color}/12 text-${color}">
+                  <i class="fa-solid ${icon}"></i>
+                </span>
+                <span class="rounded-full bg-slate-50 px-2.5 py-1 text-[10px] font-bold text-slate-400">
+                  ${active}
+                </span>
+              </div>
+              <p class="material-tag text-${color}">${tag}</p>
+              <h4 class="material-title">${name}</h4>
+              <p class="material-description">${desc}</p>
+              <div class="material-action">
+                <i class="fa-solid fa-arrow-right"></i>
+                Mulai belajar
+              </div>
+            </div>
+          `;
           card.onclick = () => {
             toastTitle.textContent = name + " dibuka";
             toastText.textContent = tag + " · ruang belajar siap dijelajahi";
@@ -1003,6 +1268,10 @@
               .querySelectorAll(".level-tab")
               .forEach((x) => x.classList.toggle("active", x === tab));
             render();
+            document.getElementById("library").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
           }),
       );
       input.oninput = render;
