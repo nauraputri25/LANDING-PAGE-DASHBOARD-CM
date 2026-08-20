@@ -329,85 +329,158 @@
       .level-tabs {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-        width: min(100%, 720px);
+        gap: 18px;
+        width: 100%;
+        max-width: 1120px;
         margin: 0 auto;
+      }
+      .unit-marquee {
+        position: relative;
+        width: min(100%, 1120px);
+        margin: 0 auto 14px;
+        overflow: hidden;
+        border: 1px solid rgba(85, 205, 161, 0.3);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--ink);
+        box-shadow: 0 5px 12px rgba(35, 35, 40, 0.06);
+        white-space: nowrap;
+      }
+      .unit-heading {
+        margin: 2px auto 0;
+        color: var(--ink);
+        font-family: "Outfit", sans-serif;
+        font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+        font-weight: 700;
+        line-height: 1.15;
+        text-align: center;
+      }
+      .unit-marquee::before,
+      .unit-marquee::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+        width: 44px;
+        pointer-events: none;
+      }
+      .unit-marquee::before {
+        left: 0;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), transparent);
+      }
+      .unit-marquee::after {
+        right: 0;
+        background: linear-gradient(270deg, rgba(255, 255, 255, 0.92), transparent);
+      }
+      .unit-marquee-track {
+        display: flex;
+        width: max-content;
+        will-change: transform;
+        animation: unit-marquee 34s linear infinite;
+        pointer-events: none;
+      }
+      .unit-marquee-group {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+        width: max-content;
+      }
+      .unit-marquee-text {
+        flex: 0 0 auto;
+        padding: 11px 2.5rem;
+        color: #52657a;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .unit-marquee-separator {
+        display: grid;
+        width: 8px;
+        height: 8px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: var(--mint);
+        box-shadow: 0 0 0 4px rgba(85, 205, 161, 0.14), 0 0 12px rgba(85, 205, 161, 0.5);
+        animation: marquee-pulse 1.8s ease-in-out infinite;
+      }
+      @keyframes unit-marquee {
+        from {
+          transform: translate3d(0, 0, 0);
+        }
+        to {
+          transform: translate3d(-25%, 0, 0);
+        }
+      }
+      @keyframes marquee-pulse {
+        0%,
+        100% {
+          transform: scale(0.82);
+          opacity: 0.7;
+        }
+        50% {
+          transform: scale(1.15);
+          opacity: 1;
+        }
       }
       .level-tab {
         position: relative;
-        min-height: 128px;
+        min-height: 190px;
         overflow: hidden;
-        border: 1px solid #d6e3ec;
-        border-radius: 18px;
-        background: linear-gradient(145deg, #fff, #eef7fb);
-        color: var(--ink);
-        box-shadow: 0 8px 18px rgba(35, 80, 116, 0.08);
-        transition: transform 0.25s ease, border-color 0.25s ease,
-          box-shadow 0.25s ease;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: transparent;
+        box-shadow: none;
+        transition: transform 0.3s ease, filter 0.3s ease;
       }
       .level-tab::after {
         content: "";
         position: absolute;
-        right: -18px;
-        bottom: -28px;
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
-        background: var(--level-color, var(--mint));
-        opacity: 0.18;
+        inset: 0;
+        z-index: 1;
+        border-radius: 18px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0), rgba(45, 45, 50, 0.14));
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
       }
       .level-tab:hover {
-        transform: translateY(-4px);
-        border-color: var(--level-color, var(--mint));
-        box-shadow: 0 14px 26px rgba(35, 80, 116, 0.14);
+        transform: translateY(-3px) scale(1.015);
+        filter: drop-shadow(0 7px 8px rgba(35, 35, 40, 0.16));
       }
       .level-tab.active {
-        border-color: var(--level-color, var(--mint));
-        background: linear-gradient(145deg, #fff, var(--level-soft, #eaf8f3));
-        box-shadow: 0 14px 28px rgba(35, 80, 116, 0.16);
+        filter: drop-shadow(0 8px 9px rgba(35, 35, 40, 0.18));
+      }
+      .level-tab:hover::after,
+      .level-tab.active::after {
+        opacity: 1;
       }
       .level-tab img {
         position: absolute;
-        top: 12px;
-        left: 50%;
-        width: 96px;
-        height: 68px;
-        object-fit: contain;
-        transform: translateX(-50%);
-        transition: transform 0.25s ease;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.35s ease, filter 0.35s ease;
       }
       .level-tab:hover img,
       .level-tab.active img {
-        transform: translateX(-50%) scale(1.08);
-      }
-      .level-tab-label {
-        position: absolute;
-        right: 12px;
-        bottom: 10px;
-        z-index: 1;
-        font-family: "Outfit", sans-serif;
-        font-size: 0.95rem;
-        font-weight: 700;
-        line-height: 1;
-      }
-      .level-tab-caption {
-        position: absolute;
-        left: 12px;
-        bottom: 10px;
-        z-index: 1;
-        color: #71869a;
-        font-size: 0.55rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        transform: scale(1.04);
+        filter: saturate(1.08) brightness(1.04);
       }
       .material {
         position: relative;
         overflow: hidden;
         padding: 0 !important;
-        background: #fff;
-        border: 1px solid #e1eaf1;
-        box-shadow: 0 12px 26px rgba(40, 83, 116, 0.08);
+        min-height: 188px;
+        background: #f3f3f3;
+        border: 1px solid #d9dde4;
+        border-radius: 10px;
+        box-shadow: 0 8px 14px rgba(25, 39, 73, 0.2);
         transition:
           transform 0.28s ease,
           border-color 0.28s ease,
@@ -415,117 +488,250 @@
         cursor: pointer;
       }
       .material:hover {
-        transform: translateY(-7px);
-        border-color: #8ddfc2;
-        box-shadow: 0 20px 38px rgba(40, 83, 116, 0.16);
+        transform: translateY(-5px);
+        border-color: var(--mint);
+        box-shadow: 0 14px 22px rgba(25, 39, 73, 0.25);
       }
       .material-cover {
-        position: relative;
-        height: 142px;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        height: auto;
         overflow: hidden;
-        background: #dfeaf3;
+        background: #f3f3f3;
       }
       .material-cover::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(22, 50, 79, 0.02) 20%,
-          rgba(22, 50, 79, 0.68) 100%
-        );
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(226, 231, 239, 0.3));
       }
       .material-cover img {
         display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.45s ease;
+        opacity: 0.12;
+        filter: grayscale(0.35);
+        transition: transform 0.45s ease, opacity 0.45s ease;
       }
       .material:hover .material-cover img {
         transform: scale(1.06);
+        opacity: 0.2;
       }
-      .material-level {
+      .material-ribbon {
         position: absolute;
-        left: 16px;
-        bottom: 14px;
-        z-index: 1;
-        color: #fff;
-        font-family: "Outfit", sans-serif;
-        font-size: 1.45rem;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        display: flex;
+        width: 30px;
+        align-items: center;
+        justify-content: center;
+        background: #202b59;
+        color: var(--level-accent, #ff7d7d);
+        font-size: 9px;
         font-weight: 700;
-        line-height: 1;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.24);
+        letter-spacing: 0.04em;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
       }
-      .material-body {
-        padding: 20px;
+      .material-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        min-height: 188px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 12px 12px 42px;
+        text-align: center;
       }
       .material-icon {
         display: grid;
-        width: 46px;
-        height: 46px;
+        width: 72px;
+        height: 72px;
         place-items: center;
-        border-radius: 16px;
-        font-size: 1.1rem;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.78);
+        font-size: 2.7rem;
+        box-shadow: 0 6px 12px rgba(25, 39, 73, 0.13);
       }
-      .material-tag {
-        margin-top: 18px;
-        font-size: 10px;
+      .material-heading {
+        margin-top: 10px;
+        color: #29365f;
+        font-size: 0.8rem;
         font-weight: 700;
-        letter-spacing: 0.14em;
-        line-height: 1.5;
-        text-transform: uppercase;
       }
       .material-title {
-        margin-top: 4px;
+        margin-top: 2px;
+        color: #29365f;
         font-family: "Outfit", sans-serif;
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: 700;
         line-height: 1.1;
       }
-      .material-description {
-        margin-top: 8px;
-        color: #71869a;
-        font-size: 12px;
-        line-height: 1.65;
-      }
+      .material-tag,
+      .material-description,
       .material-action {
+        display: none;
+      }
+      .social-section {
+        background: linear-gradient(145deg, #f8fbff, #edf8f5);
+      }
+      .social-heading {
+        max-width: 680px;
+        margin: 0 auto 2rem;
+        text-align: center;
+      }
+      .social-heading h2 {
+        margin-top: 0.6rem;
+        font-family: "Outfit", sans-serif;
+        font-size: clamp(1.7rem, 3vw, 2.5rem);
+        font-weight: 700;
+        line-height: 1;
+      }
+      .social-heading p {
+        margin-top: 0.75rem;
+        color: #71869a;
+        font-size: 0.78rem;
+        line-height: 1.7;
+      }
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .video-card {
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid #dce7f0;
+        border-radius: 18px;
+        box-shadow: 0 12px 25px rgba(40, 83, 116, 0.1);
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
+      }
+      .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 18px 30px rgba(40, 83, 116, 0.16);
+      }
+      .video-frame {
+        aspect-ratio: 16 / 9;
+        background: #dce7f0;
+      }
+      .video-frame iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .video-link {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #1f2937;
+      }
+      .video-link::after {
+        content: "\f144";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: grid;
+        width: 48px;
+        height: 48px;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(255, 61, 61, 0.95);
+        color: #fff;
+        font-family: "Font Awesome 6 Free";
+        font-size: 1.3rem;
+        transform: translate(-50%, -50%);
+        transition: transform 0.25s ease, background 0.25s ease;
+      }
+      .video-link:hover::after {
+        background: #d92f2f;
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+      .video-link img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .video-card-label {
         display: flex;
         align-items: center;
-        gap: 6px;
-        margin-top: 18px;
-        padding-top: 14px;
-        border-top: 1px solid #edf2f6;
-        color: #71869a;
-        font-size: 10px;
+        gap: 0.55rem;
+        padding: 0.8rem 0.9rem;
+        color: var(--ink);
+        font-size: 0.7rem;
         font-weight: 700;
       }
-      .material-action i {
-        color: var(--mint);
+      .video-card-label i {
+        color: #ff3d3d;
+        font-size: 1rem;
+      }
+      .instagram-panel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding: 1.25rem 1.5rem;
+        background: linear-gradient(115deg, #fff, #fff0f5 52%, #fff6df);
+        border: 1px solid #f0d9e2;
+        border-radius: 20px;
+        box-shadow: 0 12px 25px rgba(135, 72, 111, 0.1);
+      }
+      .instagram-info {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      .instagram-icon {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #feda75, #d62976 58%, #4f5bd5);
+        color: #fff;
+        font-size: 1.3rem;
+      }
+      .instagram-info strong {
+        display: block;
+        color: var(--ink);
+        font-size: 0.78rem;
+      }
+      .instagram-info span {
+        display: block;
+        margin-top: 0.2rem;
+        color: #71869a;
+        font-size: 0.68rem;
+      }
+      .social-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0;
+        padding: 0.7rem 1rem;
+        border-radius: 12px;
+        background: #d62976;
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: 0.25s ease;
+      }
+      .social-button:hover {
+        background: #b92363;
+        transform: translateY(-2px);
       }
       .analytics {
         background: linear-gradient(180deg, #f5f8fc, #edf8f5);
         border-radius: 38px 38px 0 0;
         color: var(--ink);
-      }
-      .youtube-section {
-        background: linear-gradient(135deg, #fff1f1, #f5f8fc 56%, #eafaf4);
-      }
-      .youtube-panel {
-        background: #fff;
-        border: 1px solid #f3d6d6;
-        box-shadow: 0 20px 42px rgba(150, 72, 72, 0.1);
-      }
-      .youtube-mark {
-        display: grid;
-        width: 72px;
-        height: 52px;
-        place-items: center;
-        border-radius: 16px;
-        background: #ff3d3d;
-        color: #fff;
-        font-size: 1.65rem;
-        box-shadow: 0 12px 22px rgba(255, 61, 61, 0.25);
       }
       .analytics-window {
         background: rgba(255, 255, 255, 0.82);
@@ -604,6 +810,12 @@
         .fade {
           animation: none;
         }
+        .unit-marquee-track {
+          animation: none;
+        }
+        .unit-marquee-separator {
+          animation: none;
+        }
       }
       @media (max-width: 900px) {
         .hero-board {
@@ -639,28 +851,20 @@
           gap: 8px;
         }
         .level-tab {
-          min-height: 104px;
-        }
-        .level-tab img {
-          top: 8px;
-          width: 78px;
-          height: 56px;
-        }
-        .level-tab-label {
-          right: 8px;
-          bottom: 8px;
-          font-size: 0.78rem;
-        }
-        .level-tab-caption {
-          left: 8px;
-          bottom: 8px;
-          font-size: 0.45rem;
+          min-height: 142px;
         }
         .analytics {
           border-radius: 28px 28px 0 0;
         }
         .analytics-frame {
           height: 430px;
+        }
+        .video-grid {
+          grid-template-columns: 1fr;
+        }
+        .instagram-panel {
+          align-items: flex-start;
+          flex-direction: column;
         }
       }
     </style>
@@ -717,9 +921,9 @@
           <h1
             class="display mt-6 max-w-2xl text-5xl font-bold leading-[.98] tracking-[-.04em] sm:text-7xl"
           >
-            Belajar hari ini,<br /><span
+            Dashboard,<br /><span
               class="bg-gradient-to-r from-blue to-mint bg-clip-text text-transparent"
-              >bertumbuh setiap hari.</span
+              >Cendekia Muda.</span
             >
           </h1>
           <p class="mt-6 max-w-lg text-sm leading-7 text-slate-500">
@@ -827,19 +1031,38 @@
       </div>
     </header>
     <main id="library" class="relative mx-auto max-w-6xl px-5">
+      <div class="unit-marquee" aria-label="Informasi pembelajaran setiap unit">
+        <div class="unit-marquee-track">
+          <div class="unit-marquee-group">
+            <span class="unit-marquee-text">Informasi pembelajaran di setiap unit TK, SD, SMP, SMA Sekolah Cendekia Bandung Tahun Ajaran 2026/2027</span>
+            <span class="unit-marquee-separator" aria-hidden="true"></span>
+          </div>
+          <div class="unit-marquee-group" aria-hidden="true">
+            <span class="unit-marquee-text">Informasi pembelajaran di setiap unit TK, SD, SMP, SMA Sekolah Cendekia Bandung Tahun Ajaran 2026/2027</span>
+            <span class="unit-marquee-separator"></span>
+          </div>
+          <div class="unit-marquee-group" aria-hidden="true">
+            <span class="unit-marquee-text">Informasi pembelajaran di setiap unit TK, SD, SMP, SMA Sekolah Cendekia Bandung Tahun Ajaran 2026/2027</span>
+            <span class="unit-marquee-separator"></span>
+          </div>
+          <div class="unit-marquee-group" aria-hidden="true">
+            <span class="unit-marquee-text">Informasi pembelajaran di setiap unit TK, SD, SMP, SMA Sekolah Cendekia Bandung Tahun Ajaran 2026/2027</span>
+            <span class="unit-marquee-separator"></span>
+          </div>
+        </div>
+      </div>
       <section
-        class="relative z-10 -mt-9 flex flex-col items-center gap-5 rounded-[28px] border border-white bg-white/90 p-5 shadow-xl shadow-slate-200/60 backdrop-blur sm:px-7"
+        class="relative z-10 flex flex-col items-center gap-5 rounded-[28px] border border-white bg-white/90 p-5 shadow-xl shadow-slate-200/60 backdrop-blur sm:px-7"
       >
+        <h2 id="levelTitle" class="unit-heading">Pilih unit pendidikan</h2>
         <div class="level-tabs" aria-label="Pilih unit pendidikan">
           <button
-            class="level-tab active"
+            class="level-tab"
             data-level="TK"
             style="--level-color: #ff7d7d; --level-soft: #fff0f0"
             aria-label="Pilih unit TK"
           >
-            <img src="image/logo_cm.png" alt="Logo Sekolah Cendekia Muda TK" />
-            <span class="level-tab-caption">Unit pendidikan</span>
-            <span class="level-tab-label" style="color: #e35f5f">TK</span>
+            <img src="image/unit/button tk.png" alt="Tombol unit TK Cendekia Muda" />
           </button
           ><button
             class="level-tab"
@@ -847,9 +1070,7 @@
             style="--level-color: #4d8df7; --level-soft: #edf4ff"
             aria-label="Pilih unit SD"
           >
-            <img src="image/logo_cm.png" alt="Logo Sekolah Cendekia Muda SD" />
-            <span class="level-tab-caption">Unit pendidikan</span>
-            <span class="level-tab-label" style="color: #3676d9">SD</span>
+            <img src="image/unit/button sd.png" alt="Tombol unit SD Cendekia Muda" />
           </button
           ><button
             class="level-tab"
@@ -857,9 +1078,7 @@
             style="--level-color: #55cda1; --level-soft: #eafaf4"
             aria-label="Pilih unit SMP"
           >
-            <img src="image/logo_cm.png" alt="Logo Sekolah Cendekia Muda SMP" />
-            <span class="level-tab-caption">Unit pendidikan</span>
-            <span class="level-tab-label" style="color: #2a9e78">SMP</span>
+            <img src="image/unit/button smp.png" alt="Tombol unit SMP Cendekia Muda" />
           </button
           ><button
             class="level-tab"
@@ -867,18 +1086,12 @@
             style="--level-color: #16324f; --level-soft: #edf1f5"
             aria-label="Pilih unit SMA"
           >
-            <img src="image/logo_cm.png" alt="Logo Sekolah Cendekia Muda SMA" />
-            <span class="level-tab-caption">Unit pendidikan</span>
-            <span class="level-tab-label" style="color: #16324f">SMA</span>
+            <img src="image/unit/button sma.png" alt="Tombol unit SMA Cendekia Muda" />
           </button>
         </div>
       </section>
-      <section class="py-16">
-        <div class="mb-6 flex items-end justify-between">
-          <div>
-            <h3 id="levelTitle" class="display text-2xl font-bold"></h3>
-            <p id="levelSubtitle" class="mt-2 text-xs text-slate-500"></p>
-          </div>
+      <section id="levelResults" class="hidden py-8">
+        <div class="mb-6 flex items-end justify-end">
           <span
             id="resultCount"
             class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[10px] font-bold text-slate-500"
@@ -886,7 +1099,7 @@
         </div>
         <div
           id="courseGrid"
-          class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          class="grid gap-4 sm:grid-cols-3 lg:grid-cols-5"
         ></div>
         <p
           id="emptyState"
@@ -896,33 +1109,61 @@
         </p>
       </section>
     </main>
-    <section id="youtube" class="youtube-section px-5 py-16 sm:px-8">
+    <section id="social" class="social-section px-5 py-16 sm:px-8">
       <div class="mx-auto max-w-6xl">
-        <div class="youtube-panel flex flex-col gap-6 rounded-[30px] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-          <div class="flex items-center gap-5">
-            <span class="youtube-mark" aria-hidden="true">
-              <i class="fa-brands fa-youtube"></i>
-            </span>
+        <div class="social-heading">
+          <span class="inline-flex items-center gap-2 rounded-full border border-red-200 bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.16em] text-red-500">
+            <i class="fa-brands fa-youtube"></i>
+            YouTube sekolah
+          </span>
+          <h2>Berikut cuplikan kegiatan unit di channel Youtube</h2>
+          <p>Kenali kegiatan belajar dan cerita setiap unit Sekolah Cendekia Muda Bandung.</p>
+        </div>
+        <div class="video-grid">
+          <article class="video-card">
+            <div class="video-frame">
+              <a class="video-link" href="https://youtu.be/08DFtpBYbN8?si=SGU0ZRrVulTLE16h" target="_blank" rel="noopener noreferrer" aria-label="Buka video kegiatan unit TK di YouTube">
+                <img src="https://img.youtube.com/vi/08DFtpBYbN8/hqdefault.jpg" alt="Thumbnail kegiatan unit TK" loading="lazy" />
+              </a>
+            </div>
+            <div class="video-card-label"><i class="fa-brands fa-youtube"></i><span>Kegiatan unit TK</span></div>
+          </article>
+          <article class="video-card">
+            <div class="video-frame">
+              <a class="video-link" href="https://youtu.be/lPs-vO0yvkA?si=a7XgyauzzDt9SwTS" target="_blank" rel="noopener noreferrer" aria-label="Buka video kegiatan unit SD di YouTube">
+                <img src="https://img.youtube.com/vi/lPs-vO0yvkA/hqdefault.jpg" alt="Thumbnail kegiatan unit SD" loading="lazy" />
+              </a>
+            </div>
+            <div class="video-card-label"><i class="fa-brands fa-youtube"></i><span>Kegiatan unit SD</span></div>
+          </article>
+          <article class="video-card">
+            <div class="video-frame">
+              <a class="video-link" href="https://youtu.be/ZoW6JKjKQAY?si=E6fRCIOqJ8gf8YTn" target="_blank" rel="noopener noreferrer" aria-label="Buka video kegiatan unit SMP di YouTube">
+                <img src="https://img.youtube.com/vi/ZoW6JKjKQAY/hqdefault.jpg" alt="Thumbnail kegiatan unit SMP" loading="lazy" />
+              </a>
+            </div>
+            <div class="video-card-label"><i class="fa-brands fa-youtube"></i><span>Kegiatan unit SMP</span></div>
+          </article>
+          <article class="video-card">
+            <div class="video-frame">
+              <a class="video-link" href="https://youtu.be/ISqLmURVaCM?si=GiDOTSvol3Cwis-B" target="_blank" rel="noopener noreferrer" aria-label="Buka video kegiatan unit SMA di YouTube">
+                <img src="https://img.youtube.com/vi/ISqLmURVaCM/hqdefault.jpg" alt="Thumbnail kegiatan unit SMA" loading="lazy" />
+              </a>
+            </div>
+            <div class="video-card-label"><i class="fa-brands fa-youtube"></i><span>Kegiatan unit SMA</span></div>
+          </article>
+        </div>
+        <div class="instagram-panel">
+          <div class="instagram-info">
+            <span class="instagram-icon"><i class="fa-brands fa-instagram"></i></span>
             <div>
-              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-coral">
-                YouTube sekolah
-              </p>
-              <h2 class="display mt-1 text-2xl font-bold">
-                Lihat cerita dan aktivitas Cendekia Muda.
-              </h2>
-              <p class="mt-2 max-w-xl text-xs leading-6 text-slate-500">
-                Temukan video kegiatan, pembelajaran, dan kabar terbaru sekolah.
-              </p>
+              <strong>Ikuti kegiatan sekolah di Instagram</strong>
+              <span>Update aktivitas dan kabar terbaru Cendekia Muda Bandung.</span>
             </div>
           </div>
-          <a
-            class="flex shrink-0 items-center justify-center gap-2 rounded-2xl bg-[#ff3d3d] px-5 py-3 text-xs font-bold text-white transition hover:bg-[#d92f2f]"
-            href="https://www.youtube.com/results?search_query=Sekolah+Islam+Cendekia+Muda"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Buka YouTube
-            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          <a class="social-button" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram"></i>
+            Buka Instagram
           </a>
         </div>
       </div>
@@ -1194,28 +1435,42 @@
         },
       };
       const grid = document.getElementById("courseGrid"),
+        levelResults = document.getElementById("levelResults"),
         input = document.getElementById("searchInput"),
         clear = document.getElementById("clearSearch"),
         count = document.getElementById("resultCount"),
         empty = document.getElementById("emptyState"),
         title = document.getElementById("levelTitle"),
-        subtitle = document.getElementById("levelSubtitle"),
         toast = document.getElementById("toast"),
         toastTitle = document.getElementById("toastTitle"),
         toastText = document.getElementById("toastText"),
         photoDeck = document.getElementById("photoDeck");
-      let active = "TK";
+      let active = null;
       const levelImages = {
-        TK: "image/tk3.jpg",
-        SD: "image/sd3.jpg",
-        SMP: "image/smp1.jpg",
-        SMA: "image/sma2.jpg",
+        TK: "image/unit/button tk.png",
+        SD: "image/unit/button sd.png",
+        SMP: "image/unit/button smp.png",
+        SMA: "image/unit/button sma.png",
+      };
+      const levelLinks = {
+        TK: "https://dashboard.cendekiamuda.sch.id/unit-tk",
+        SD: "https://dashboard.cendekiamuda.sch.id/unit-sd",
+        SMP: "https://dashboard.cendekiamuda.sch.id/unit-smp",
+        SMA: "https://dashboard.cendekiamuda.sch.id/sma",
       };
       function render() {
+        if (!active) {
+          title.textContent = "Pilih unit pendidikan";
+          grid.innerHTML = "";
+          count.textContent = "";
+          empty.classList.add("hidden");
+          levelResults.classList.add("hidden");
+          clear.classList.toggle("hidden", !input.value);
+          return;
+        }
         const data = curriculum[active],
           query = input.value.trim().toLowerCase();
-        title.textContent = data.title;
-        subtitle.textContent = data.subtitle;
+        title.textContent = `Berikut dashboard ${active} Islam Cendekia Muda Bandung`;
         grid.innerHTML = "";
         let found = 0;
         data.items.forEach((item, index) => {
@@ -1223,34 +1478,30 @@
           found++;
           const [name, tag, icon, color, desc] = item,
             card = document.createElement("article");
-          card.className = "material fade rounded-[24px] p-5";
+          card.className = "material fade";
           card.style.animationDelay = `${index * 0.06}s`;
+            card.style.setProperty("--level-accent", `var(--${color})`);
           card.innerHTML = `
             <div class="material-cover">
               <img src="${levelImages[active]}" alt="Kegiatan belajar jenjang ${active}" />
-              <span class="material-level">${active}</span>
             </div>
-            <div class="material-body">
-              <div class="flex items-start justify-between gap-3">
-                <span class="material-icon bg-${color}/12 text-${color}">
+              <span class="material-ribbon">Kelas ${name}</span>
+              <div class="material-content">
+                <span class="material-icon text-${color}">
                   <i class="fa-solid ${icon}"></i>
                 </span>
-                <span class="rounded-full bg-slate-50 px-2.5 py-1 text-[10px] font-bold text-slate-400">
-                  ${active}
-                </span>
-              </div>
-              <p class="material-tag text-${color}">${tag}</p>
-              <h4 class="material-title">${name}</h4>
-              <p class="material-description">${desc}</p>
-              <div class="material-action">
-                <i class="fa-solid fa-arrow-right"></i>
-                Mulai belajar
+                <span class="material-heading">Dashboard</span>
+                <h4 class="material-title">${name}</h4>
+                <div class="mt-2 text-[9px] font-semibold text-slate-400">
+                  <i class="fa-solid fa-arrow-right mr-1 text-${color}"></i>
+                  Buka kelas
               </div>
             </div>
           `;
           card.onclick = () => {
+            window.open(levelLinks[active], "_blank", "noopener,noreferrer");
             toastTitle.textContent = name + " dibuka";
-            toastText.textContent = tag + " · ruang belajar siap dijelajahi";
+            toastText.textContent = `${tag} · membuka website unit ${active}`;
             toast.classList.add("show");
             setTimeout(() => toast.classList.remove("show"), 2800);
           };
@@ -1258,6 +1509,7 @@
         });
         count.textContent = `${found} materi`;
         empty.classList.toggle("hidden", found !== 0);
+        levelResults.classList.remove("hidden");
         clear.classList.toggle("hidden", !input.value);
       }
       document.querySelectorAll(".level-tab").forEach(
@@ -1268,10 +1520,6 @@
               .querySelectorAll(".level-tab")
               .forEach((x) => x.classList.toggle("active", x === tab));
             render();
-            document.getElementById("library").scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
           }),
       );
       input.oninput = render;
