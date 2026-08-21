@@ -1,28 +1,3 @@
-/**
- * =============================================================
- *  DATA PORTAL PEMBELAJARAN — CENDEKIA MUDA
- * =============================================================
- *  Semua materi / level / mata pelajaran ditaruh di sini.
- *  Kalau mau nambah, ubah, atau hapus kelas & Google Site,
- *  CUKUP EDIT FILE INI SAJA — tidak perlu sentuh index.html.
- *
- *  Struktur tiap unit:
- *    label      : judul unit (ditampilkan di header tab)
- *    desc       : deskripsi singkat di bawah judul
- *    badge      : teks badge kecil di kanan header (mis. "Level 1-6")
- *    accent     : warna aksen unit -> 'blue' | 'green' | 'red' | 'dark'
- *    layout     : 'fruit' (kartu buah TK) | 'level' (kartu angka SD)
- *                 | 'subject' (kartu mapel SMP/SMA)
- *    baseUrl    : link Google Site default untuk seluruh item di unit ini
- *    items[]    : daftar kelas/level/mapel
- *        title  : nama yang tampil
- *        icon   : emoji (fruit) ATAU kelas ikon Font Awesome (subject)
- *        desc   : deskripsi singkat (khusus layout 'subject')
- *        color  : 'blue' | 'green' | 'red' (khusus layout 'subject', warna ikon)
- *        url    : (opsional) override baseUrl kalau kelas ini linknya beda
- * =============================================================
- */
-
 const SCHOOL_DATA = {
   tk: {
     label: "TK Islam Cendekia Muda",
@@ -91,12 +66,6 @@ const SCHOOL_DATA = {
   }
 };
 
-/**
- * Link Looker Studio (sumber data: Google Analytics 4 -> Looker Studio).
- * Ganti REPORT_ID di bawah dengan ID laporan Looker Studio milik sekolah.
- * Cara mendapatkan ID: buka laporan di Looker Studio -> File -> Embed report
- * -> salin ID yang ada di URL, di antara /reporting/ dan /page/.
- */
 const ANALYTICS_CONFIG = {
   reportId: "81fac7f5-c05d-4923-a8b4-a241f6328551",
   pageId: "ZIF6F",
@@ -108,8 +77,4 @@ const ANALYTICS_CONFIG = {
   }
 };
 
-/**
- * Google Analytics 4 Measurement ID.
- * Ganti "G-XXXXXXXXXX" dengan Measurement ID GA4 sekolah (Admin -> Data streams).
- */
 const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
