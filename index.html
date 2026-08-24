@@ -1403,6 +1403,11 @@
         line-height: 1.25;
         white-space: nowrap;
       }
+      .group-heading-text strong.sd-group-title {
+        font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+        font-weight: 700;
+        line-height: 1.15;
+      }
       .group-heading-text span {
         margin-top: 0.3rem;
         color: #7c8ea1;
@@ -2061,6 +2066,7 @@
       <section
         class="relative z-10 flex flex-col items-center gap-5 rounded-[28px] border border-white bg-white/90 p-5 shadow-xl shadow-slate-200/60 backdrop-blur sm:px-7 reveal-up"
       >
+        <h2 id="levelTitle" class="unit-heading">Pilih unit pendidikan</h2>
         <div class="level-tabs" aria-label="Pilih unit pendidikan">
           <button
             class="level-tab"
@@ -2099,9 +2105,9 @@
             <span class="level-tab-dot" aria-hidden="true"></span>
           </button>
         </div>
-        <h2 id="levelTitle" class="unit-heading">Pilih unit pendidikan</h2>
       </section>
       <section id="levelResults" class="hidden py-8">
+        <h2 id="dashboardTitle" class="unit-heading mb-6">Pilih dashboard unit</h2>
         <div class="mb-6 flex items-center justify-between gap-3">
           <button
             id="backHomeBtn"
@@ -2592,7 +2598,7 @@
         clear = document.getElementById("clearSearch"),
         count = document.getElementById("resultCount"),
         empty = document.getElementById("emptyState"),
-        title = document.getElementById("levelTitle"),
+        title = document.getElementById("dashboardTitle"),
         toast = document.getElementById("toast"),
         toastTitle = document.getElementById("toastTitle"),
         toastText = document.getElementById("toastText"),
@@ -3009,13 +3015,9 @@
         });
       }
       function showResultsChrome() {
-        const wasHidden = levelResults.classList.contains("hidden");
         socialSection.classList.add("hidden");
         analyticsSection.classList.add("hidden");
         levelResults.classList.remove("hidden");
-        if (wasHidden) {
-          scrollToResultsIfNeeded();
-        }
       }
       function showHomeChrome() {
         socialSection.classList.remove("hidden");
@@ -3097,7 +3099,6 @@
         }
       }
       function render() {
-        title.classList.toggle("below-tabs", Boolean(active));
         if (!active) {
           const query = input.value.trim().toLowerCase();
           if (query) {
@@ -3125,13 +3126,20 @@
             found += matched.length;
             const section = document.createElement("div");
             section.className = "group-section";
-            section.innerHTML = `
+            section.innerHTML = `${group.name === "Bandung" ? `
               <div class="group-header">
                 <div class="group-heading-text">
-                  <strong>${group.displayName || group.name}</strong>
                   <span>${group.tagline || ""}</span>
                 </div>
               </div>
+            ` : `
+              <div class="group-header">
+                <div class="group-heading-text">
+                  <strong class="sd-group-title">${group.displayName || group.name}</strong>
+                  <span>${group.tagline || ""}</span>
+                </div>
+              </div>
+            `}
               <div class="group-panel">
                 <div class="group-grid"></div>
               </div>
@@ -3206,7 +3214,6 @@
               .querySelectorAll(".level-tab")
               .forEach((x) => x.classList.toggle("active", x.dataset.level === level));
             render();
-            document.getElementById("library").scrollIntoView({ behavior: "smooth" });
           }),
       );
       function resetToHome(scrollTargetId) {
