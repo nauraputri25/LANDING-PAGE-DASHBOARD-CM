@@ -842,6 +842,35 @@
         line-height: 1.1;
         text-shadow: 0 1px 1px rgba(255, 255, 255, 0.65);
       }
+      .smp-level-actions {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        width: 100%;
+        margin-top: 5px;
+      }
+      .smp-level-button {
+        flex: 1;
+        min-width: 0;
+        padding: 6px 3px;
+        border: 1px solid rgba(85, 205, 161, 0.45);
+        border-radius: 999px;
+        background: rgba(85, 205, 161, 0.12);
+        color: #2a9e78;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 0.57rem;
+        font-weight: 700;
+        line-height: 1;
+        white-space: nowrap;
+        transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+      }
+      .smp-level-button:hover,
+      .smp-level-button:focus-visible {
+        transform: translateY(-2px);
+        background: var(--mint);
+        color: #16324f;
+        outline: none;
+      }
       .material-tag,
       .material-description,
       .material-action {
@@ -868,6 +897,295 @@
       }
       .material-cta i {
         color: var(--level-accent, var(--mint));
+      }
+      .smp-material {
+        --smp-accent: #2a9e78;
+        --smp-soft: #e8f7f2;
+        aspect-ratio: auto;
+        min-height: 132px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft)),
+          radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--smp-accent) 28%, transparent), transparent 58%);
+        border: 1px solid rgba(255, 255, 255, 0.95);
+        box-shadow:
+          0 12px 24px rgba(25, 39, 73, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+      .smp-material::before {
+        content: "";
+        position: absolute;
+        inset: -35%;
+        z-index: 0;
+        background: linear-gradient(120deg, rgba(255, 255, 255, 0.72), transparent 42%);
+        opacity: 0.8;
+        pointer-events: none;
+      }
+      .smp-sketch {
+        position: absolute;
+        inset: -16%;
+        opacity: 0.2;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        transform: rotate(-8deg);
+      }
+      .smp-material:nth-child(1) .smp-sketch {
+        background-image: radial-gradient(ellipse at center, transparent 0 28%, var(--smp-accent) 29% 30%, transparent 31%), linear-gradient(60deg, transparent 47%, var(--smp-accent) 48% 49%, transparent 50%);
+        background-size: 90px 70px, 70px 70px;
+        background-position: 82% 18%, 14% 80%;
+      }
+      .smp-material:nth-child(1) {
+        background: radial-gradient(circle at 80% 22%, color-mix(in srgb, var(--smp-accent) 20%, transparent) 0 16%, transparent 17%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(2) .smp-sketch {
+        background-image: repeating-linear-gradient(90deg, transparent 0 18px, var(--smp-accent) 19px 20px), repeating-linear-gradient(0deg, transparent 0 18px, var(--smp-accent) 19px 20px);
+        background-size: 74px 74px;
+      }
+      .smp-material:nth-child(2) {
+        background: linear-gradient(135deg, transparent 0 36%, color-mix(in srgb, var(--smp-accent) 13%, transparent) 37% 62%, transparent 63%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(3) .smp-sketch {
+        background-image: repeating-linear-gradient(-12deg, transparent 0 13px, var(--smp-accent) 14px 15px);
+        background-size: 120px 80px;
+        transform: rotate(-12deg);
+      }
+      .smp-material:nth-child(3) {
+        background: radial-gradient(ellipse at 18% 78%, color-mix(in srgb, var(--smp-accent) 16%, transparent) 0 20%, transparent 21%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(4) .smp-sketch {
+        background-image: linear-gradient(45deg, transparent 46%, var(--smp-accent) 47% 49%, transparent 50%), linear-gradient(-45deg, transparent 46%, var(--smp-accent) 47% 49%, transparent 50%);
+        background-size: 54px 54px;
+        transform: rotate(8deg) scale(1.2);
+      }
+      .smp-material:nth-child(4) {
+        background: linear-gradient(35deg, transparent 0 42%, color-mix(in srgb, var(--smp-accent) 14%, transparent) 43% 57%, transparent 58%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(5) .smp-sketch {
+        background-image: radial-gradient(ellipse at center, transparent 0 20%, var(--smp-accent) 21% 22%, transparent 23%), radial-gradient(ellipse at center, transparent 0 38%, var(--smp-accent) 39% 40%, transparent 41%), radial-gradient(circle at 50% 50%, var(--smp-accent) 0 4px, transparent 5px);
+        background-size: 106px 62px, 106px 62px, 106px 62px;
+        background-position: 22% 32%, 22% 32%, 22% 32%;
+      }
+      .smp-material:nth-child(5) {
+        background: radial-gradient(circle at 22% 32%, color-mix(in srgb, var(--smp-accent) 18%, transparent) 0 12%, transparent 13%), radial-gradient(circle at 76% 76%, color-mix(in srgb, var(--smp-accent) 10%, transparent) 0 18%, transparent 19%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(6) .smp-sketch {
+        background-image: radial-gradient(ellipse at center, transparent 0 38%, var(--smp-accent) 39% 40%, transparent 41%), linear-gradient(90deg, transparent 49%, var(--smp-accent) 50% 51%, transparent 52%), linear-gradient(0deg, transparent 49%, var(--smp-accent) 50% 51%, transparent 52%);
+        background-size: 104px 72px, 104px 72px, 104px 72px;
+        background-position: 72% 20%, 72% 20%, 72% 20%;
+        transform: rotate(-18deg);
+      }
+      .smp-material:nth-child(6) {
+        background: radial-gradient(ellipse at 72% 20%, color-mix(in srgb, var(--smp-accent) 18%, transparent) 0 22%, transparent 23%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(7) .smp-sketch {
+        background-image: radial-gradient(ellipse at center, transparent 0 35%, var(--smp-accent) 36% 38%, transparent 39%), radial-gradient(circle at 50% 50%, var(--smp-accent) 0 3px, transparent 4px);
+        background-size: 104px 68px, 104px 68px;
+        background-position: 18% 70%, 18% 70%;
+        transform: rotate(22deg);
+      }
+      .smp-material:nth-child(7) {
+        background: radial-gradient(ellipse at 18% 70%, color-mix(in srgb, var(--smp-accent) 16%, transparent) 0 18%, transparent 19%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(8) .smp-sketch {
+        background-image: repeating-linear-gradient(0deg, transparent 0 15px, var(--smp-accent) 16px 17px), radial-gradient(ellipse at center, transparent 0 34%, var(--smp-accent) 35% 36%, transparent 37%);
+        background-size: 112px 82px, 112px 82px;
+        background-position: 78% 18%, 78% 18%;
+      }
+      .smp-material:nth-child(8) {
+        background: linear-gradient(160deg, transparent 0 38%, color-mix(in srgb, var(--smp-accent) 13%, transparent) 39% 64%, transparent 65%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(9) .smp-sketch {
+        background-image: linear-gradient(90deg, transparent 48%, var(--smp-accent) 49% 51%, transparent 52%), linear-gradient(0deg, transparent 48%, var(--smp-accent) 49% 51%, transparent 52%), linear-gradient(45deg, transparent 47%, var(--smp-accent) 48% 50%, transparent 51%);
+        background-size: 70px 70px;
+        transform: rotate(12deg);
+      }
+      .smp-material:nth-child(9) {
+        background: radial-gradient(circle at 74% 22%, color-mix(in srgb, var(--smp-accent) 19%, transparent) 0 15%, transparent 16%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(10) .smp-sketch {
+        background-image: linear-gradient(90deg, transparent 48%, var(--smp-accent) 49% 51%, transparent 52%), linear-gradient(0deg, transparent 48%, var(--smp-accent) 49% 51%, transparent 52%), radial-gradient(circle at 50% 50%, transparent 0 25%, var(--smp-accent) 26% 28%, transparent 29%);
+        background-size: 54px 54px, 54px 54px, 90px 90px;
+        background-position: 74% 22%, 74% 22%, 74% 22%;
+        transform: rotate(-8deg);
+      }
+      .smp-material:nth-child(10) {
+        background: radial-gradient(circle at 74% 22%, color-mix(in srgb, var(--smp-accent) 18%, transparent) 0 9%, transparent 10%), linear-gradient(45deg, transparent 0 45%, color-mix(in srgb, var(--smp-accent) 11%, transparent) 46% 54%, transparent 55%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(11) .smp-sketch {
+        background-image: repeating-linear-gradient(24deg, transparent 0 20px, var(--smp-accent) 21px 22px), repeating-linear-gradient(-24deg, transparent 0 20px, var(--smp-accent) 21px 22px);
+        background-size: 88px 70px;
+        transform: rotate(12deg) scale(1.15);
+      }
+      .smp-material:nth-child(11) {
+        background: linear-gradient(155deg, transparent 0 30%, color-mix(in srgb, var(--smp-accent) 15%, transparent) 31% 69%, transparent 70%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material:nth-child(12) .smp-sketch {
+        background-image: radial-gradient(circle at 30% 30%, transparent 0 12%, var(--smp-accent) 13% 15%, transparent 16%), radial-gradient(circle at 70% 65%, transparent 0 18%, var(--smp-accent) 19% 21%, transparent 22%), linear-gradient(25deg, transparent 47%, var(--smp-accent) 48% 50%, transparent 51%);
+        background-size: 92px 82px, 112px 92px, 72px 72px;
+        transform: rotate(-18deg) scale(1.1);
+      }
+      .smp-material:nth-child(12) {
+        background: radial-gradient(ellipse at 30% 30%, color-mix(in srgb, var(--smp-accent) 18%, transparent) 0 17%, transparent 18%), radial-gradient(ellipse at 70% 65%, color-mix(in srgb, var(--smp-accent) 12%, transparent) 0 20%, transparent 21%), linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft));
+      }
+      .smp-material {
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft)),
+          radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--smp-accent) 28%, transparent), transparent 58%) !important;
+      }
+      .smp-material::before {
+        inset: -35%;
+        opacity: 0.8;
+        background: linear-gradient(120deg, rgba(255, 255, 255, 0.72), transparent 42%);
+        display: block;
+      }
+      .smp-sketch {
+        display: none;
+      }
+      .smp-material {
+        min-height: 132px;
+        background: #fff !important;
+      }
+      .smp-visual {
+        position: relative;
+        display: flex;
+        flex: 0 0 88px;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 60px;
+        height: 60px;
+        overflow: hidden;
+        background: var(--smp-soft);
+        isolation: isolate;
+      }
+      .smp-visual::before,
+      .smp-visual::after {
+        display: none;
+      }
+      .smp-visual img {
+        position: relative;
+        z-index: 1;
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        padding: 7px;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.7);
+        filter: drop-shadow(0 7px 8px rgba(25, 39, 73, 0.14));
+        transition: transform 0.28s ease;
+      }
+      .smp-material:hover .smp-visual img {
+        transform: translateY(-3px) rotate(-4deg) scale(1.06);
+      }
+      .smp-material .material-content {
+        flex: 1 1 auto;
+        height: 72px;
+        min-height: 72px;
+        padding: 9px 12px 11px;
+        background: #fff !important;
+      }
+      .smp-material .material-title {
+        font-size: 1.08rem;
+      }
+      .smp-material .smp-level-actions {
+        max-width: 242px;
+        gap: 7px;
+        margin-top: 0;
+      }
+      .smp-material .smp-level-button {
+        padding: 9px 7px;
+        font-size: 0.68rem;
+      }
+      .smp-material:hover {
+        border-color: color-mix(in srgb, var(--smp-accent) 58%, white);
+        box-shadow:
+          0 20px 34px color-mix(in srgb, var(--smp-accent) 24%, rgba(25, 39, 73, 0.18)),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      }
+      .smp-material .material-content {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        min-height: 132px;
+        justify-content: center;
+        padding: 16px 12px;
+        background: transparent;
+      }
+      .smp-material .material-title {
+        position: relative;
+        z-index: 1;
+        color: color-mix(in srgb, var(--smp-accent) 78%, #16324f);
+        font-size: 1.32rem;
+        font-weight: 800;
+        line-height: 1;
+        text-shadow: 0 2px 0 rgba(255, 255, 255, 0.72);
+        transition: transform 0.28s ease, color 0.28s ease;
+      }
+      .smp-material:hover .material-title {
+        color: var(--smp-accent);
+        transform: translateY(-2px) scale(1.03);
+      }
+      .smp-title-row {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        max-width: 100%;
+      }
+      .smp-title-icon {
+        width: 1.3em;
+        height: 1.3em;
+        flex: 0 0 auto;
+        object-fit: contain;
+        padding: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.95);
+        border-radius: 0.42em;
+        background: rgba(255, 255, 255, 0.72);
+        filter: drop-shadow(0 2px 3px rgba(25, 39, 73, 0.16));
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
+      }
+      .smp-material:hover .smp-title-icon {
+        transform: rotate(-6deg) scale(1.08);
+        box-shadow: 0 4px 10px color-mix(in srgb, var(--smp-accent) 28%, transparent);
+      }
+      .smp-material .smp-level-actions {
+        max-width: 220px;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .smp-material .smp-level-button {
+        padding: 8px 5px;
+        background: rgba(255, 255, 255, 0.68);
+        border-color: color-mix(in srgb, var(--smp-accent) 42%, white);
+        color: color-mix(in srgb, var(--smp-accent) 78%, #16324f);
+        box-shadow: 0 3px 8px rgba(25, 39, 73, 0.08);
+      }
+      .smp-material .smp-level-button:hover,
+      .smp-material .smp-level-button:focus-visible {
+        background: var(--smp-accent);
+        color: #fff;
+      }
+      @media (max-width: 640px) {
+        .smp-material .material-title {
+          font-size: 1.18rem;
+        }
+      }
+      .smp-material {
+        min-height: 132px;
+      }
+      .smp-material .smp-visual {
+        flex: 0 0 60px;
+        height: 60px;
+      }
+      .smp-material .material-content {
+        flex: 0 0 72px;
+        height: 72px !important;
+        min-height: 72px !important;
+        padding: 9px 12px 11px;
+        background: #fff !important;
+      }
+      .smp-material .smp-level-button {
+        padding: 9px 7px;
+        font-size: 0.68rem;
       }
       .material-grade {
         position: relative;
@@ -2055,25 +2373,66 @@
           subtitle: "Materi kontekstual untuk remaja.",
           items: [
             [
-              "Matematika",
-              "Numerasi · Aljabar",
+              "PAIBP&BATQ",
+              "Pendidikan agama · Al-Qur'an",
+              "fa-hands-praying",
+              "mint",
+              "Membentuk ilmu dan akhlak",
+            ],
+            [
+              "PPKn",
+              "Kewarganegaraan · Karakter",
+              "fa-landmark",
+              "blue",
+              "Tumbuh sebagai warga yang bertanggung jawab",
+            ],
+            [
+              "B.Indo",
+              "Bahasa Indonesia · Literasi",
+              "fa-pen-nib",
+              "coral",
+              "Mengolah gagasan menjadi karya",
+            ],
+            [
+              "MATH",
+              "Matematika · Numerasi",
               "fa-square-root-variable",
               "blue",
               "Pola yang membentuk solusi",
             ],
             [
-              "IPA Terpadu",
-              "Sains · Eksperimen",
+              "IPA",
+              "Ilmu Pengetahuan Alam · Eksperimen",
               "fa-atom",
               "mint",
               "Uji hipotesis, temukan fakta",
             ],
             [
-              "Bahasa",
-              "Literasi · Argumentasi",
-              "fa-pen-nib",
+              "IPS",
+              "Ilmu Pengetahuan Sosial · Perspektif",
+              "fa-globe",
+              "Membaca dunia dan dinamikanya",
+            ],
+            [
+              "English",
+              "Language · Communication",
+              "fa-comments",
+              "blue",
+              "Connect beyond the classroom",
+            ],
+            [
+              "Sirah",
+              "Sejarah Islam · Keteladanan",
+              "fa-book-open",
               "coral",
-              "Suara yang punya makna",
+              "Belajar dari perjalanan penuh hikmah",
+            ],
+            [
+              "Qur'an",
+              "Al-Qur'an · Tadabbur",
+              "fa-book-quran",
+              "mint",
+              "Mendekatkan diri melalui ayat-ayat pilihan",
             ],
             [
               "Informatika",
@@ -2083,18 +2442,18 @@
               "Berpikir seperti pencipta",
             ],
             [
-              "Pendidikan Agama",
-              "Akhlak · Refleksi",
-              "fa-hands-praying",
-              "mint",
-              "Ilmu yang menuntun laku",
+              "PJOK",
+              "Kesehatan · Kebugaran",
+              "fa-person-running",
+              "coral",
+              "Menjaga tubuh tetap aktif dan sehat",
             ],
             [
-              "English",
-              "Language · Communication",
-              "fa-comments",
-              "coral",
-              "Connect beyond the classroom",
+              "ART",
+              "Seni · Ekspresi",
+              "fa-palette",
+              "mint",
+              "Menyalurkan imajinasi menjadi karya",
             ],
           ],
         },
@@ -2241,6 +2600,20 @@
         blue: "#2f6fe0",
         ink: "#16324f",
       };
+      const smpCardColors = {
+        "PAIBP&BATQ": ["#2a9e78", "#e8f7f2"],
+        PPKn: ["#3978d8", "#edf4ff"],
+        "B.Indo": ["#e46b72", "#fff0f1"],
+        MATH: ["#8b68c9", "#f3efff"],
+        IPA: ["#168f9b", "#e8f8fa"],
+        IPS: ["#d28b24", "#fff7e5"],
+        English: ["#d35b91", "#fff0f7"],
+        Sirah: ["#b66a3c", "#fff2e9"],
+        "Qur'an": ["#2d9b83", "#e9f8f3"],
+        Informatika: ["#3b72b9", "#edf4fc"],
+        PJOK: ["#df6b38", "#fff1e9"],
+        ART: ["#c354a5", "#fff0fb"],
+      };
       const materialImages = {
         TK: {
           Apple: twemoji("1f34e"),
@@ -2263,12 +2636,18 @@
           "Level 6": twemoji("1f310"),
         },
         SMP: {
-          Matematika: twemoji("1f4d0"),
-          "IPA Terpadu": twemoji("1f9ec"),
-          Bahasa: twemoji("1f4dd"),
-          Informatika: twemoji("1f4bb"),
-          "Pendidikan Agama": twemoji("1f64f"),
-          English: twemoji("1f4ac"),
+          "PAIBP&BATQ": "image/smp/paibp-batq.svg",
+          PPKn: "image/smp/ppkn.svg",
+          "B.Indo": "image/smp/b-indo.svg",
+          MATH: "image/smp/math.svg",
+          IPA: "image/smp/ipa.svg",
+          IPS: "image/smp/ips.svg",
+          English: "image/smp/english.svg",
+          Sirah: "image/smp/sirah.svg",
+          "Qur'an": "image/smp/quran.svg",
+          Informatika: "image/smp/informatika.svg",
+          PJOK: "image/smp/pjok.svg",
+          ART: "image/smp/art.svg",
         },
         SMA: {
           Sains: twemoji("1f52c"),
@@ -2308,6 +2687,10 @@
         const gradeNumber = parseGradeNumber(name);
         card.style.animationDelay = `${(index % 12) * 0.06}s`;
         card.style.setProperty("--level-accent", accentHex[color] || accentHex.coral);
+        if (level === "SMP" && smpCardColors[name]) {
+          card.style.setProperty("--smp-accent", smpCardColors[name][0]);
+          card.style.setProperty("--smp-soft", smpCardColors[name][1]);
+        }
         if (gradeNumber !== null) {
           const suffix = ordinalSuffix(gradeNumber);
           card.className = "material material-grade fade";
@@ -2326,23 +2709,51 @@
             </div>
           `;
         } else {
-          const materialImage = getMaterialImage(level, name);
-          card.className = "material fade";
-          card.innerHTML = `
+          card.className = `material fade${level === "SMP" ? " smp-material" : ""}`;
+          card.innerHTML = level === "SMP" ? `
+            <div class="smp-visual" aria-hidden="true">
+              <img src="${getMaterialImage(level, name)}" alt="" />
+              <h4 class="material-title smp-title-row">${name}</h4>
+            </div>
+            <div class="material-content">
+              <div class="smp-level-actions" aria-label="Pilih level ${name}">
+                ${["I", "II", "III"].map((levelName) => `
+                  <button class="smp-level-button" type="button" data-level-name="Level ${levelName}">
+                    Level ${levelName}
+                  </button>
+                `).join("")}
+              </div>
+            </div>
+          ` : `
             <div class="material-cover">
-              <img src="${materialImage}" alt="Ikon ${name} untuk unit ${level}" />
+              <img src="${getMaterialImage(level, name)}" alt="Ikon ${name} untuk unit ${level}" />
             </div>
             <span class="material-spine" aria-hidden="true"></span>
-              <div class="material-content">
-                <h4 class="material-title">Kelas ${name}</h4>
-                <div class="material-cta">
-                  <i class="fa-solid fa-arrow-right mr-1 text-${color}"></i>
-                  Buka kelas
+            <div class="material-content">
+              <h4 class="material-title">Kelas ${name}</h4>
+              <div class="material-cta">
+                <i class="fa-solid fa-arrow-right mr-1 text-${color}"></i>
+                Buka kelas
               </div>
             </div>
           `;
         }
+        if (level === "SMP") {
+          card.querySelectorAll(".smp-level-button").forEach((button) => {
+            button.onclick = (event) => {
+              event.stopPropagation();
+              const selectedLevel = button.dataset.levelName;
+              const target = levelLinks.SMP;
+              window.open(target, "_blank", "noopener,noreferrer");
+              toastTitle.textContent = `${name} · ${selectedLevel}`;
+              toastText.textContent = `Membuka dashboard SMP untuk ${selectedLevel}`;
+              toast.classList.add("show");
+              setTimeout(() => toast.classList.remove("show"), 2800);
+            };
+          });
+        }
         card.onclick = () => {
+          if (level === "SMP") return;
           const target =
             (groupName &&
               groupClassLinks[level] &&
@@ -2499,7 +2910,9 @@
             grid.appendChild(section);
           });
         } else {
-          grid.className = "grid gap-4 sm:grid-cols-3 lg:grid-cols-5";
+          grid.className = active === "SMP"
+            ? "grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+            : "grid gap-4 sm:grid-cols-3 lg:grid-cols-5";
           data.items.forEach((item, index) => {
             if (!item.join(" ").toLowerCase().includes(query)) return;
             found++;
