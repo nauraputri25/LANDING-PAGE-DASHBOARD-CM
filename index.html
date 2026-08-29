@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -851,16 +851,10 @@
         justify-content: center;
         gap: 10px;
         overflow: hidden;
-        background: linear-gradient(
-          145deg,
-          color-mix(in srgb, var(--level-accent, var(--ink)) 10%, #fff) 0%,
-          color-mix(in srgb, var(--level-accent, var(--ink)) 5%, #fff) 68%,
-          #fff 100%
-        );
-        border: 1px solid color-mix(in srgb, var(--level-accent, var(--ink)) 12%, #dce7f0);
-        border-left: 4px solid color-mix(in srgb, var(--level-accent, var(--ink)) 55%, #fff);
+        background: linear-gradient(145deg, #fff, #fafbfc);
+        border: 1px solid #dce7f0;
         border-radius: 14px;
-        box-shadow: 0 7px 16px color-mix(in srgb, var(--level-accent, var(--ink)) 9%, transparent);
+        box-shadow: 0 4px 12px rgba(25, 39, 73, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.95);
       }
       .sma-material::before {
         display: none;
@@ -878,12 +872,12 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        gap: 9px;
+        gap: 0;
         padding-top: 0;
         text-align: center;
       }
       .sma-material .sma-card-icon {
-        display: grid;
+        display: none;
         width: 38px;
         height: 38px;
         flex: 0 0 auto;
@@ -901,10 +895,14 @@
       }
       .sma-material .material-title {
         color: var(--ink);
-        font-size: 0.95rem;
-        line-height: 1.15;
+        font-family: "Crimson Pro", serif;
+        font-size: 1.45rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        line-height: 1.35;
         overflow-wrap: anywhere;
         text-align: center;
+        flex: 1;
       }
       .sma-material .sma-card-tag {
         display: none;
@@ -928,21 +926,34 @@
         padding-top: 0;
       }
       .sma-material .sma-level-button {
-        min-height: 30px;
-        padding: 6px 4px;
-        border: 2px solid color-mix(in srgb, var(--level-accent, var(--ink)) 34%, #dce7f0);
+        min-height: 28px;
+        padding: 4px 6px;
+        border: none;
         border-radius: 8px;
-        background: #f8fbff;
+        background: linear-gradient(145deg, #fff, #f8f9fa);
         color: var(--ink);
-        font-size: 0.58rem;
-        font-weight: 700;
-        transition: 0.2s ease;
+        font-family: "Outfit", sans-serif;
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.4px;
+        transition: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 4px 12px rgba(25, 39, 73, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        cursor: pointer;
       }
       .sma-material .sma-level-button:hover,
       .sma-material .sma-level-button:focus-visible {
-        border-color: var(--level-accent, var(--ink));
-        background: var(--level-accent, var(--ink));
-        color: #fff;
+        background: linear-gradient(145deg, #f0f4f8, #e8ecf0);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(25, 39, 73, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      }
+      .sma-material .sma-level-button:active {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(25, 39, 73, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.08);
+      }
+      .sma-material:hover {
+        transform: translateY(-7px);
+        border-color: #dce7f0;
+        box-shadow: 0 12px 28px rgba(25, 39, 73, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.95);
       }
       .smp-level-actions {
         display: flex;
@@ -1320,6 +1331,50 @@
         pointer-events: none;
       }
       .smp-photo-material .smp-visual img {
+        display: none;
+      }
+      .sma-bg-material {
+        background-image: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)), var(--sma-bg-photo);
+        background-position: center;
+        background-size: cover;
+      }
+      .sma-bg-material .material-title {
+        text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+      }
+      .sma-bg-material .sma-level-button {
+        background: rgba(255,255,255,0.75);
+        backdrop-filter: blur(4px);
+      }
+      .sma-photo-material {
+        aspect-ratio: auto;
+        min-height: 150px;
+        padding: 12px 12px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        overflow: hidden;
+        background: linear-gradient(145deg, #fff, #fafbfc);
+        border: 1px solid #dce7f0;
+        border-radius: 14px;
+        box-shadow: 0 4px 12px rgba(25, 39, 73, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        position: relative;
+      }
+      .sma-photo-material::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)), var(--sma-photo, none);
+        background-position: center;
+        background-size: cover;
+        border-radius: 14px;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .sma-photo-material > * {
+        position: relative;
+        z-index: 1;
+      }
+      .sma-photo-material .sma-visual {
         display: none;
       }
       .glass-nav {
@@ -2892,7 +2947,7 @@
         "B.Indo": ["#e46b72", "#fff0f1"],
         MATH: ["#8b68c9", "#f3efff"],
         IPA: ["#168f9b", "#e8f8fa"],
-        IPS: ["#d28b24", "#fff7e5"],
+        IPS: ["#e46b72", "#fff0f1"],
         English: ["#d35b91", "#fff0f7"],
         Sirah: ["#b95c6e", "#fff0f2"],
         "Qur'an": ["#2d9b83", "#e9f8f3"],
@@ -2923,12 +2978,12 @@
         },
         SMP: {
           "PAIBP&BATQ": "image/smp/paib smp.png",
-          PPKn: "image/smp/ppkn.svg",
+          PPKn: "image/smp/ppkn smp.png",
           "B.Indo": "image/smp/indo smp.png",
           MATH: "image/smp/matematika smp.png",
           IPA: "image/smp/ipa smp.png",
-          IPS: "image/smp/ips.svg",
-          English: "image/smp/english.svg",
+          IPS: "image/smp/ips smp.png",
+          English: "image/smp/english smp.png",
           Sirah: "image/smp/sirah smp.png",
           "Qur'an": "image/smp/quran smp.png",
           Informatika: "image/smp/informatika smp.png",
@@ -2936,12 +2991,16 @@
           ART: "image/smp/art smp.png",
         },
         SMA: {
-          Sains: twemoji("1f52c"),
-          "Sosial Humaniora": twemoji("1f4ca"),
-          "Bahasa & Budaya": twemoji("1f4da"),
-          "Matematika Lanjut": twemoji("1f522"),
-          "Project Lab": twemoji("1f680"),
-          "Persiapan Kuliah": twemoji("1f393"),
+          PAI: "image/sma/PAI SMA.png",
+          ARABIC: "image/sma/ARABIC SMA.png",
+          "QUR'ANIC": "image/sma/QUR'ANIC SMA.png",
+          "SIRAH NABAWIYAH": "image/sma/SIRAH NABAWIYAH SMA.png",
+          PKN: "image/sma/PKN SMA.png",
+          KIMIA: "image/sma/KIMIA SMA.png",
+          MATEMATIKA: "image/sma/MATEMATIKA SMA.png",
+          BIOLOGI: "image/sma/BIOLOGI SMA.png",
+          FISIKA: "image/sma/FISIKA SMA.png",
+          "B. INDONESIA": "image/sma/INDONESIA SMA.png",
         },
       };
       function getMaterialImage(level, name) {
@@ -2980,6 +3039,9 @@
         if (level === "SMP" && /\.png$/i.test(getMaterialImage(level, name))) {
           card.style.setProperty("--smp-photo", `url("${getMaterialImage(level, name)}")`);
         }
+        if (level === "SMA" && /\.png$/i.test(getMaterialImage(level, name))) {
+          card.style.setProperty("--sma-bg-photo", `url("${getMaterialImage(level, name).replace(/\s/g, '%20').replace(/'/g, '%27')}")`);
+        }
         if (gradeNumber !== null) {
           const suffix = ordinalSuffix(gradeNumber);
           card.className = "material material-grade fade";
@@ -2998,7 +3060,7 @@
             </div>
           `;
         } else {
-          card.className = `material fade${level === "SMP" ? ` smp-material${/\.png$/i.test(getMaterialImage(level, name)) ? " smp-photo-material" : ""}${name === "MATH" ? " smp-math-material" : ""}` : level === "SMA" ? " sma-material" : ""}`;
+          card.className = `material fade${level === "SMP" ? ` smp-material${/\.png$/i.test(getMaterialImage(level, name)) ? " smp-photo-material" : ""}${name === "MATH" ? " smp-math-material" : ""}` : level === "SMA" ? ` sma-material${/\.png$/i.test(getMaterialImage(level, name)) ? " sma-bg-material" : ""}` : ""}`;
           card.innerHTML = level === "SMP" ? `
             <div class="smp-visual" aria-hidden="true">
               <img src="${getMaterialImage(level, name)}" alt="" />
