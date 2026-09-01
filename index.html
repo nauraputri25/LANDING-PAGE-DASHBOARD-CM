@@ -258,6 +258,10 @@
         background: rgba(255, 255, 255, 0.2);
         transform: translateY(-2px);
       }
+      .nav-action-secondary.is-active {
+        background: rgba(255, 255, 255, 0.24);
+        border-color: rgba(255, 255, 255, 0.6);
+      }
       .nav-logo {
         width: 158px;
         height: 60px;
@@ -265,6 +269,40 @@
         padding: 4px;
         background: #fff;
         border-radius: 10px;
+      }
+      .mobile-menu {
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        top: 4.9rem;
+        z-index: 29;
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        padding: 0.65rem;
+        border-radius: 18px;
+        background: rgba(20, 45, 72, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow: 0 18px 40px rgba(22, 50, 79, 0.25);
+        backdrop-filter: blur(22px);
+        animation: fade 0.25s both;
+      }
+      .mobile-menu.hidden {
+        display: none;
+      }
+      .mobile-menu a {
+        padding: 0.75rem 0.7rem;
+        border-radius: 12px;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: 0.2s;
+      }
+      .mobile-menu a:hover,
+      .mobile-menu a:active {
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
       }
       .hero {
         min-height: 630px;
@@ -922,7 +960,7 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 4px;
         width: min(100%, 240px);
-        margin-top: 14px;
+        margin-top: 6px;
         padding-top: 0;
       }
       .sma-material .sma-level-button {
@@ -1015,7 +1053,7 @@
         --smp-accent: #2a9e78;
         --smp-soft: #e8f7f2;
         aspect-ratio: auto;
-        min-height: 132px;
+        min-height: 108px;
         background:
           linear-gradient(145deg, rgba(255, 255, 255, 0.98), var(--smp-soft)),
           radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--smp-accent) 28%, transparent), transparent 58%);
@@ -1154,7 +1192,7 @@
         display: none;
       }
       .smp-material {
-        min-height: 132px;
+        min-height: 108px;
         background: #fff !important;
       }
       .smp-visual {
@@ -1163,8 +1201,8 @@
         flex: 0 0 88px;
         align-items: center;
         justify-content: center;
-        flex: 0 0 60px;
-        height: 60px;
+        flex: 0 0 52px;
+        height: 52px;
         overflow: hidden;
         background: var(--smp-soft);
         isolation: isolate;
@@ -1218,9 +1256,10 @@
         z-index: 1;
         width: 100%;
         height: 100%;
-        min-height: 132px;
+        min-height: 108px;
         justify-content: center;
-        padding: 16px 12px;
+        padding: 8px 12px;
+        gap: 4px;
         background: transparent;
       }
       .smp-material .material-title {
@@ -1263,7 +1302,7 @@
       .smp-material .smp-level-actions {
         max-width: 220px;
         gap: 6px;
-        margin-top: 10px;
+        margin-top: 4px;
       }
       .smp-material .smp-level-button {
         padding: 8px 5px;
@@ -1347,11 +1386,11 @@
       }
       .sma-photo-material {
         aspect-ratio: auto;
-        min-height: 150px;
-        padding: 12px 12px;
+        min-height: 122px;
+        padding: 10px 10px;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 6px;
         overflow: hidden;
         background: linear-gradient(145deg, #fff, #fafbfc);
         border: 1px solid #dce7f0;
@@ -1408,22 +1447,23 @@
         }
       }
       .smp-material {
-        min-height: 132px;
+        min-height: 108px;
       }
       .smp-material .smp-visual {
-        flex: 0 0 60px;
-        height: 60px;
+        flex: 0 0 52px;
+        height: 52px;
       }
       .smp-material .material-content {
-        flex: 0 0 72px;
-        height: 72px !important;
-        min-height: 72px !important;
-        padding: 9px 12px 11px;
+        flex: 0 0 56px;
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 6px 12px 8px;
+        gap: 3px;
         background: #fff !important;
       }
       .smp-material .smp-level-button {
-        padding: 9px 7px;
-        font-size: 0.68rem;
+        padding: 7px 6px;
+        font-size: 0.66rem;
       }
       .material-grade {
         position: relative;
@@ -1989,20 +2029,21 @@
           font-size: 0.8rem;
         }
         .level-tabs {
-          gap: 12px;
-          max-width: 420px;
+          gap: 10px;
+          max-width: 100%;
+          padding: 8px;
         }
         .level-tab {
-          height: 56px;
-          padding: 7px;
-          border-radius: 16px;
+          height: 88px;
+          padding: 10px;
+          border-radius: 18px;
         }
         .level-tab::before {
-          inset: -7px;
-          border-radius: 22px;
+          inset: -8px;
+          border-radius: 24px;
         }
         .level-tab::after {
-          border-radius: 14px;
+          border-radius: 15px;
         }
         .analytics {
           border-radius: 28px 28px 0 0;
@@ -2016,6 +2057,50 @@
         .instagram-panel {
           align-items: flex-start;
           flex-direction: column;
+        }
+        .material {
+          aspect-ratio: 1 / 1;
+        }
+        .material-cover {
+          padding: 8px 8px 8px 32px;
+        }
+        .material-spine {
+          width: 26px;
+        }
+        .material-content {
+          padding: 7px 6px 7px 32px;
+          gap: 2px;
+        }
+        .material-title {
+          font-size: 0.82rem;
+        }
+        .material-cta {
+          margin-top: 3px;
+          padding: 4px 8px;
+          font-size: 0.58rem;
+        }
+        .material-grade .grade-number {
+          font-size: 2.3rem;
+        }
+        .mobile-menu {
+          top: 4.6rem;
+        }
+        .sma-material,
+        .sma-photo-material {
+          min-height: 112px;
+          padding: 8px 8px;
+          gap: 4px;
+        }
+        .sma-material .material-title {
+          font-size: 1.05rem;
+        }
+        .sma-material .sma-level-actions {
+          margin-top: 4px;
+          gap: 3px;
+        }
+        .sma-material .sma-level-button {
+          padding: 3px 4px;
+          font-size: 0.58rem;
         }
       }
     </style>
@@ -2056,8 +2141,28 @@
             <i class="fa-solid fa-chart-pie text-base"></i>
             <span class="nav-action-label">Live Analytics</span>
           </a>
+          <button
+            id="mobileMenuBtn"
+            type="button"
+            class="nav-action nav-action-secondary md:hidden"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+          >
+            <i class="fa-solid fa-bars text-base"></i>
+          </button>
         </div>
       </nav>
+      <div
+        id="mobileMenu"
+        class="mobile-menu hidden md:hidden"
+        role="menu"
+        aria-label="Menu navigasi"
+      >
+        <a href="#library" role="menuitem">Unit & Aktivitas</a>
+        <a href="#analytics" role="menuitem">Analytics</a>
+        <a href="#about" role="menuitem">Tentang sekolah</a>
+      </div>
       <div
         class="hero-content relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 pb-24 lg:grid-cols-[1fr_360px]"
       >
@@ -2070,13 +2175,13 @@
           <h1
             class="display mt-6 max-w-2xl text-4xl font-bold leading-[1.05] tracking-[-.03em] sm:text-5xl"
           >
-            Dashboard Sekolah<br /><span
+            Dashboard Sekolah Islam<br /><span
               class="bg-gradient-to-r from-blue to-mint bg-clip-text text-transparent"
-              >Cendekia Muda Bandung</span
+              >Cendekia Muda</span
             >
           </h1>
           <p class="mt-6 max-w-lg text-sm leading-7 text-slate-500">
-            Satu pintu menuju seluruh dashboard belajar unit TK, SD, SMP, dan SMA Sekolah Cendekia Bandung — pilih level dan mata pelajarannya.
+            Satu pintu menuju seluruh dashboard belajar unit TK, SD, SMP, dan SMA Sekolah Cendekia Bandung dan Makassar — pilih level dan mata pelajarannya.
           </p>
           <div
             class="search mt-9 flex max-w-xl items-center rounded-[20px] p-2"
@@ -2269,6 +2374,46 @@
         </p>
       </section>
     </main>
+    <section id="analytics" class="analytics px-5 py-16 sm:px-8">
+      <div class="mx-auto max-w-6xl">
+        <div
+          class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end reveal-up"
+        >
+          <div>
+            <span
+              class="mb-3 inline-flex items-center gap-2 rounded-full border border-blue/30 bg-blue/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.16em] text-blue"
+              ><i class="fa-solid fa-chart-line"></i>Executive dashboard ·
+              analytics</span
+            >
+            <h2 class="display text-3xl font-bold sm:text-4xl">
+              Statistik pembelajaran.
+            </h2>
+            <p class="mt-2 text-xs leading-6 text-slate-500">
+              Metrik aktivitas portal di seluruh jenjang pendidikan.
+            </p>
+          </div>
+          <a
+            id="fullReportLink"
+            href="https://datastudio.google.com/u/0/reporting/81fac7f5-c05d-4923-a8b4-a241f6328551/page/ZIF6F"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center gap-2 rounded-2xl bg-blue px-5 py-3 text-xs font-bold text-white transition hover:bg-mint hover:text-ink"
+            >Buka Looker Studio
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i
+          ></a>
+        </div>
+        <div class="analytics-window rounded-[30px] p-2 sm:p-3 reveal-up" style="transition-delay: 0.12s">
+          <div class="analytics-frame overflow-hidden rounded-[22px]">
+            <iframe
+              id="lookerFrame"
+              title="Looker Studio Statistik Pembelajaran"
+              src="https://datastudio.google.com/embed/reporting/81fac7f5-c05d-4923-a8b4-a241f6328551/page/ZIF6F"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="social" class="social-section px-5 py-16 sm:px-8">
       <div class="mx-auto max-w-6xl">
         <div class="social-heading reveal-up">
@@ -2354,46 +2499,6 @@
             </div>
             <div class="video-card-label instagram-label"><i class="fa-brands fa-instagram"></i><span>Kegiatan unit SMA</span></div>
           </article>
-        </div>
-      </div>
-    </section>
-    <section id="analytics" class="analytics px-5 py-16 sm:px-8">
-      <div class="mx-auto max-w-6xl">
-        <div
-          class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end reveal-up"
-        >
-          <div>
-            <span
-              class="mb-3 inline-flex items-center gap-2 rounded-full border border-blue/30 bg-blue/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.16em] text-blue"
-              ><i class="fa-solid fa-chart-line"></i>Executive dashboard ·
-              analytics</span
-            >
-            <h2 class="display text-3xl font-bold sm:text-4xl">
-              Statistik pembelajaran.
-            </h2>
-            <p class="mt-2 text-xs leading-6 text-slate-500">
-              Metrik aktivitas portal di seluruh jenjang pendidikan.
-            </p>
-          </div>
-          <a
-            id="fullReportLink"
-            href="https://datastudio.google.com/u/0/reporting/81fac7f5-c05d-4923-a8b4-a241f6328551/page/ZIF6F"
-            target="_blank"
-            rel="noopener"
-            class="flex items-center gap-2 rounded-2xl bg-blue px-5 py-3 text-xs font-bold text-white transition hover:bg-mint hover:text-ink"
-            >Buka Looker Studio
-            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i
-          ></a>
-        </div>
-        <div class="analytics-window rounded-[30px] p-2 sm:p-3 reveal-up" style="transition-delay: 0.12s">
-          <div class="analytics-frame overflow-hidden rounded-[22px]">
-            <iframe
-              id="lookerFrame"
-              title="Looker Studio Statistik Pembelajaran"
-              src="https://datastudio.google.com/embed/reporting/81fac7f5-c05d-4923-a8b4-a241f6328551/page/ZIF6F"
-              allowfullscreen
-            ></iframe>
-          </div>
         </div>
       </div>
     </section>
@@ -2741,7 +2846,9 @@
         photoDeck = document.getElementById("photoDeck"),
         socialSection = document.getElementById("social"),
         analyticsSection = document.getElementById("analytics"),
-        backHomeBtn = document.getElementById("backHomeBtn");
+        backHomeBtn = document.getElementById("backHomeBtn"),
+        mobileMenuBtn = document.getElementById("mobileMenuBtn"),
+        mobileMenu = document.getElementById("mobileMenu");
       let active = null;
       let searchDebounce = null;
       const levelImages = {
@@ -3172,12 +3279,10 @@
       }
       function showResultsChrome() {
         socialSection.classList.add("hidden");
-        analyticsSection.classList.add("hidden");
         levelResults.classList.remove("hidden");
       }
       function showHomeChrome() {
         socialSection.classList.remove("hidden");
-        analyticsSection.classList.remove("hidden");
         levelResults.classList.add("hidden");
         title.textContent = "Pilih unit pendidikan";
         grid.innerHTML = "";
@@ -3234,7 +3339,7 @@
                 </div>
               </div>
               <div class="group-panel">
-                <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-5"></div>
+                <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5"></div>
               </div>
             `;
             const innerGrid = section.querySelector(".group-panel > div");
@@ -3306,10 +3411,10 @@
           });
         } else {
           grid.className = active === "SMP"
-            ? "grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+            ? "grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4"
             : active === "SMA"
-              ? "grid gap-7 sm:grid-cols-2 lg:grid-cols-4"
-            : "grid gap-4 sm:grid-cols-3 lg:grid-cols-5";
+              ? "grid grid-cols-2 gap-4 sm:gap-7 sm:grid-cols-2 lg:grid-cols-4"
+            : "grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-5";
           data.items.forEach((item, index) => {
             if (!item.join(" ").toLowerCase().includes(query)) return;
             found++;
@@ -3392,6 +3497,26 @@
       document.getElementById("footerHomeLink")?.addEventListener("click", (event) => {
         event.preventDefault();
         resetToHome("top");
+      });
+      mobileMenuBtn?.addEventListener("click", () => {
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        mobileMenu.classList.toggle("hidden");
+        mobileMenuBtn.setAttribute("aria-expanded", String(!isOpen));
+        mobileMenuBtn.classList.toggle("is-active", !isOpen);
+      });
+      mobileMenu?.querySelectorAll("a").forEach((link) =>
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          mobileMenuBtn?.setAttribute("aria-expanded", "false");
+          mobileMenuBtn?.classList.remove("is-active");
+        }),
+      );
+      document.addEventListener("click", (event) => {
+        if (!mobileMenu || mobileMenu.classList.contains("hidden")) return;
+        if (mobileMenu.contains(event.target) || mobileMenuBtn.contains(event.target)) return;
+        mobileMenu.classList.add("hidden");
+        mobileMenuBtn.setAttribute("aria-expanded", "false");
+        mobileMenuBtn.classList.remove("is-active");
       });
       toTop.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
       addEventListener("scroll", () =>
