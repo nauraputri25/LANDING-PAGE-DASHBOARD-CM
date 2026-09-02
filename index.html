@@ -493,10 +493,10 @@
         width: 100%;
         max-width: 620px;
         margin: 0 auto;
-        padding: 10px;
+        padding: 8px;
         overflow: hidden;
         border: 1px solid #d9e5ed;
-        border-radius: 26px;
+        border-radius: 22px;
         background: rgba(246, 250, 253, 0.9);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 8px 18px rgba(22, 50, 79, 0.08);
       }
@@ -636,6 +636,18 @@
           box-shadow 0.28s ease,
           border-color 0.28s ease,
           background 0.28s ease;
+      }
+      .level-tab-inner {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+      .level-tab-label {
+        display: none;
       }
       .level-tab-dot {
         position: absolute;
@@ -882,17 +894,20 @@
         text-shadow: 0 1px 1px rgba(255, 255, 255, 0.65);
       }
       .sma-material {
-        aspect-ratio: auto;
-        min-height: 150px;
-        padding: 12px 12px;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
+        height: 125px !important;
+        min-height: auto !important;
+        max-height: 125px !important;
+        aspect-ratio: auto !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        padding: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important; /* Menempatkan semua konten tepat di tengah kartu */
+        align-items: center !important;
+        position: relative;
         overflow: hidden;
-        background: linear-gradient(145deg, #fff, #fafbfc);
-        border: 1px solid #dce7f0;
-        border-radius: 14px;
-        box-shadow: 0 4px 12px rgba(25, 39, 73, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.95);
       }
       .sma-material::before {
         display: none;
@@ -911,7 +926,8 @@
         justify-content: center;
         width: 100%;
         gap: 0;
-        padding-top: 0;
+        padding-top: 8px; /* Mengatur tinggi judul agar pas turun sedikit */
+        margin-bottom: 6px !important; /* Mendorong tombol sedikit naik mendekati judul */
         text-align: center;
       }
       .sma-material .sma-card-icon {
@@ -934,10 +950,10 @@
       .sma-material .material-title {
         color: var(--ink);
         font-family: "Crimson Pro", serif;
-        font-size: 1.45rem;
+        font-size: 1.15rem;
         font-weight: 500;
         letter-spacing: 0.5px;
-        line-height: 1.35;
+        line-height: 1.2;
         overflow-wrap: anywhere;
         text-align: center;
         flex: 1;
@@ -949,43 +965,45 @@
         line-height: 1.35;
         text-align: center;
       }
+      .sma-material .sma-level-actions,
       .sma-material .sma-card-cta {
-        margin-top: 12px;
+        margin-top: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
         color: var(--level-accent, var(--ink));
         font-size: 0.68rem;
         font-weight: 700;
       }
-      .sma-material .sma-level-actions {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 4px;
-        width: min(100%, 240px);
-        margin-top: 6px;
-        padding-top: 0;
-      }
       .sma-material .sma-level-button {
-        min-height: 28px;
-        padding: 4px 6px;
+        min-height: 24px;
+        padding: 4px 8px !important;
         border: none;
         border-radius: 8px;
         background: linear-gradient(145deg, #fff, #f8f9fa);
         color: var(--ink);
         font-family: "Outfit", sans-serif;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         font-weight: 500;
         letter-spacing: 0.4px;
+        transform: none !important;
         transition: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
         box-shadow: 0 4px 12px rgba(25, 39, 73, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.95);
         cursor: pointer;
+        white-space: nowrap;
       }
       .sma-material .sma-level-button:hover,
       .sma-material .sma-level-button:focus-visible {
         background: linear-gradient(145deg, #f0f4f8, #e8ecf0);
-        transform: translateY(-3px);
+        transform: translateY(-2px) !important;
         box-shadow: 0 8px 20px rgba(25, 39, 73, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.95);
       }
       .sma-material .sma-level-button:active {
-        transform: translateY(-1px);
+        transform: translateY(0) !important;
         box-shadow: 0 2px 8px rgba(25, 39, 73, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.08);
       }
       .sma-material:hover {
@@ -1418,8 +1436,10 @@
       }
       .glass-nav {
         position: absolute;
-        width: calc(100% - 2rem);
-        max-width: 72rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 1.5rem);
+        max-width: 76rem;
         padding: 0.3rem 0.65rem;
         border-radius: 18px;
       }
@@ -1435,35 +1455,167 @@
         gap: 1.5rem;
       }
       .hero-content {
-        max-width: 80rem;
+        width: min(100%, 78rem);
+        max-width: 78rem;
         padding-top: 110px;
       }
       .hero {
         min-height: 570px;
       }
       @media (max-width: 640px) {
+        #library {
+          padding-left: 0.7rem;
+          padding-right: 0.7rem;
+        }
+        #library > section:first-of-type {
+          gap: 12px !important;
+          padding: 14px 12px 16px !important;
+          border-radius: 18px !important;
+        }
+        .unit-marquee {
+          margin-bottom: 8px;
+        }
+        .unit-marquee-text {
+          padding: 8px 1.1rem;
+          font-size: 0.62rem;
+          letter-spacing: 0.06em;
+        }
+        .unit-heading {
+          margin: 0;
+          font-size: clamp(2rem, 6vw, 2.4rem);
+          line-height: 1.12;
+        }
         .smp-material .material-title {
           font-size: 1.18rem;
         }
+        .level-tabs {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          max-width: 100%;
+          gap: 6px;
+          padding: 6px;
+          margin: 0 auto;
+          border-radius: 16px;
+        }
+        .level-tabs::before {
+          width: calc((100% - 18px) / 4);
+          top: 6px;
+          bottom: 6px;
+          left: 6px;
+          border-radius: 12px;
+          transform: translateX(calc(var(--active-tab-index, 0) * (100% + 6px)));
+        }
+        .level-tab {
+          height: 54px;
+          padding: 4px 2px 5px;
+          border-radius: 12px;
+        }
+        .level-tab-inner {
+          flex-direction: column;
+          justify-content: center;
+          gap: 2px;
+        }
+        .level-tab img {
+          width: 52px;
+          height: 52px;
+          max-height: 52px;
+        }
+        .level-tab-label {
+          display: none;
+        }
+        .group-grid {
+          gap: 0.7rem;
+        }
+        .group-grid > * {
+          width: calc(50% - 0.35rem);
+        }
+        .material,
+        .smp-material,
+        .sma-material,
+        .sma-photo-material {
+          min-height: 168px;
+        }
+        .material-cover {
+          height: 52%;
+          padding: 6px 6px 6px 18px;
+        }
+        .material-spine {
+          width: 14px;
+        }
+        .material-content {
+          height: 48%;
+          padding: 7px 8px 7px 18px;
+          gap: 2px;
+        }
+        .material-title {
+          font-size: 0.8rem;
+        }
+        .sma-material .material-title {
+          font-size: 0.92rem;
+        }
+        .sma-material .sma-level-actions {
+          gap: 3px;
+          margin-top: 4px;
+        }
+        .sma-material .sma-level-button {
+          font-size: 0.58rem;
+          padding: 4px 6px;
+          min-height: 22px;
+        }
+        .smp-material .smp-level-button {
+          font-size: 0.6rem;
+          padding: 5px 5px;
+          min-height: 24px;
+        }
       }
       .smp-material {
-        min-height: 108px;
+        height: fit-content !important;
+        min-height: auto !important;
+        aspect-ratio: auto !important;
       }
       .smp-material .smp-visual {
         flex: 0 0 52px;
         height: 52px;
       }
       .smp-material .material-content {
-        flex: 0 0 56px;
-        height: 56px !important;
-        min-height: 56px !important;
-        padding: 6px 12px 8px;
-        gap: 3px;
+        width: 100%;
+        height: auto !important;
+        min-height: auto !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 12px 10px !important; 
+        gap: 8px !important;          
         background: #fff !important;
       }
+      .smp-material .smp-level-actions {
+        max-width: 220px;
+        gap: 5px;
+        margin-top: 0;
+      }
       .smp-material .smp-level-button {
-        padding: 7px 6px;
+        padding: 8px 6px;
         font-size: 0.66rem;
+        line-height: 1.1;
+        min-height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media (max-width: 640px) {
+        .smp-material .material-content {
+          padding: 5px 8px 6px;
+          gap: 2px;
+        }
+        .smp-material .smp-level-actions {
+          gap: 3px;
+          max-width: 100%;
+        }
+        .smp-material .smp-level-button {
+          padding: 6px 4px;
+          min-height: 20px;
+          font-size: 0.52rem;
+        }
       }
       .material-grade {
         position: relative;
@@ -2008,8 +2160,8 @@
           min-height: auto;
         }
         .hero-content {
-          padding-top: 125px;
-          padding-bottom: 64px;
+          padding-top: 118px;
+          padding-bottom: 42px;
         }
         .hero-board {
           display: block;
@@ -2028,22 +2180,64 @@
           padding: 0.75rem 0.9rem;
           font-size: 0.8rem;
         }
+        #library {
+          padding-left: 0.7rem;
+          padding-right: 0.7rem;
+        }
+        #library > section:first-of-type {
+          gap: 10px !important;
+          padding: 16px 12px 14px !important;
+          border-radius: 18px !important;
+        }
+        .unit-marquee {
+          margin-bottom: 8px;
+        }
+        .unit-marquee-text {
+          padding: 8px 1rem;
+          font-size: 0.6rem;
+          letter-spacing: 0.05em;
+        }
+        .unit-heading {
+          margin: 0;
+          font-size: clamp(1.8rem, 5vw, 2.2rem);
+          line-height: 1.12;
+        }
         .level-tabs {
-          gap: 10px;
+          gap: 8px;
           max-width: 100%;
           padding: 8px;
-        }
-        .level-tab {
-          height: 88px;
-          padding: 10px;
           border-radius: 18px;
         }
-        .level-tab::before {
-          inset: -8px;
-          border-radius: 24px;
+        .level-tabs::before {
+          content: "";
+          position: absolute;
+          top: 8px;
+          bottom: 8px;
+          left: 8px;
+          width: calc((100% - 16px) / 4); 
+          border-radius: 14px;
+          background: #ffffff;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          transform: translateX(calc(var(--active-tab-index, 0) * 100%)); 
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .level-tab::after {
-          border-radius: 15px;
+        .level-tab {
+          height: 54px;
+          padding: 6px 3px 6px;
+          border-radius: 14px;
+        }
+        .level-tab-inner {
+          flex-direction: row;
+          justify-content: center;
+          gap: 6px;
+        }
+        .level-tab img {
+          width: 70px;
+          height: 70px;
+          max-height: 70px;
+        }
+        .level-tab-label {
+          display: none;
         }
         .analytics {
           border-radius: 28px 28px 0 0;
@@ -2058,21 +2252,35 @@
           align-items: flex-start;
           flex-direction: column;
         }
+        .group-grid {
+          gap: 0.7rem;
+        }
+        .group-grid > * {
+          width: calc(50% - 0.35rem);
+        }
+        .material,
+        .smp-material,
+        .sma-material,
+        .sma-photo-material {
+          min-height: 148px;
+        }
         .material {
           aspect-ratio: 1 / 1;
         }
         .material-cover {
-          padding: 8px 8px 8px 32px;
+          height: 52%;
+          padding: 6px 6px 6px 18px;
         }
         .material-spine {
-          width: 26px;
+          width: 14px;
         }
         .material-content {
-          padding: 7px 6px 7px 32px;
+          height: 48%;
+          padding: 7px 8px 7px 18px;
           gap: 2px;
         }
         .material-title {
-          font-size: 0.82rem;
+          font-size: 0.8rem;
         }
         .material-cta {
           margin-top: 3px;
@@ -2087,12 +2295,12 @@
         }
         .sma-material,
         .sma-photo-material {
-          min-height: 112px;
+          min-height: 118px;
           padding: 8px 8px;
           gap: 4px;
         }
         .sma-material .material-title {
-          font-size: 1.05rem;
+          font-size: 1.02rem;
         }
         .sma-material .sma-level-actions {
           margin-top: 4px;
@@ -2101,6 +2309,18 @@
         .sma-material .sma-level-button {
           padding: 3px 4px;
           font-size: 0.58rem;
+        }
+        .smp-material .material-title {
+          font-size: 1.08rem;
+        }
+        .smp-material .smp-level-actions {
+          gap: 5px;
+          margin-top: 2px;
+        }
+        .smp-material .smp-level-button {
+          padding: 6px 5px;
+          font-size: 0.6rem;
+          min-height: 22px;
         }
       }
     </style>
@@ -2315,7 +2535,10 @@
             style="--level-color: #ff7d7d; --level-soft: #fff0f0"
             aria-label="Pilih unit TK"
           >
-            <img src="image/unit/tk.png" alt="Tombol unit TK Cendekia Muda" />
+            <span class="level-tab-inner">
+              <img src="image/unit/tk.png" alt="Tombol unit TK Cendekia Muda" />
+              <span class="level-tab-label">TK</span>
+            </span>
             <span class="level-tab-dot" aria-hidden="true"></span>
           </button
           ><button
@@ -2324,7 +2547,10 @@
             style="--level-color: #4d8df7; --level-soft: #edf4ff"
             aria-label="Pilih unit SD"
           >
-            <img src="image/unit/sd.png" alt="Tombol unit SD Cendekia Muda" />
+            <span class="level-tab-inner">
+              <img src="image/unit/sd.png" alt="Tombol unit SD Cendekia Muda" />
+              <span class="level-tab-label">SD</span>
+            </span>
             <span class="level-tab-dot" aria-hidden="true"></span>
           </button
           ><button
@@ -2333,7 +2559,10 @@
             style="--level-color: #55cda1; --level-soft: #eafaf4"
             aria-label="Pilih unit SMP"
           >
-            <img src="image/unit/smp.png" alt="Tombol unit SMP Cendekia Muda" />
+            <span class="level-tab-inner">
+              <img src="image/unit/smp.png" alt="Tombol unit SMP Cendekia Muda" />
+              <span class="level-tab-label">SMP</span>
+            </span>
             <span class="level-tab-dot" aria-hidden="true"></span>
           </button
           ><button
@@ -2342,7 +2571,10 @@
             style="--level-color: #16324f; --level-soft: #edf1f5"
             aria-label="Pilih unit SMA"
           >
-            <img src="image/unit/sma.png" alt="Tombol unit SMA Cendekia Muda" />
+            <span class="level-tab-inner">
+              <img src="image/unit/sma.png" alt="Tombol unit SMA Cendekia Muda" />
+              <span class="level-tab-label">SMA</span>
+            </span>
             <span class="level-tab-dot" aria-hidden="true"></span>
           </button>
         </div>
@@ -3411,7 +3643,7 @@
           });
         } else {
           grid.className = active === "SMP"
-            ? "grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+            ? "grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4 items-start"
             : active === "SMA"
               ? "grid grid-cols-2 gap-4 sm:gap-7 sm:grid-cols-2 lg:grid-cols-4"
             : "grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-5";
