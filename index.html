@@ -3208,10 +3208,30 @@
           "Level 11": "https://sites.google.com/cendekiamuda.sch.id/geografi20262027/geografi/level-11",
           "Level 12": "https://sites.google.com/cendekiamuda.sch.id/geografi20262027/geografi/level-12",
         },
+        SOSIOLOGI: {
+          "Level 10": "https://sites.google.com/cendekiamuda.sch.id/website-sosiologi-2026-2027/sosiologi/sosiologi-level-x",
+          "Level 11": "https://sites.google.com/cendekiamuda.sch.id/website-sosiologi-2026-2027/sosiologi/sosiologi-antropologi-level-xi",
+          "Level 12": "https://sites.google.com/cendekiamuda.sch.id/website-sosiologi-2026-2027/sosiologi/sosiologi-level-xii",
+        },
         EKONOMI: {
           "Level 10": "https://sites.google.com/cendekiamuda.sch.id/ekonomi/ekonomi/level-10",
           "Level 11": "https://sites.google.com/cendekiamuda.sch.id/ekonomi/ekonomi/level-11",
           "Level 12": "https://sites.google.com/cendekiamuda.sch.id/ekonomi/ekonomi/level-12",
+        },
+        PENJAS: {
+          "Level 10": "https://sites.google.com/cendekiamuda.sch.id/pjok10/pjok/level-10",
+          "Level 11": "https://sites.google.com/cendekiamuda.sch.id/pjok10/pjok/level-11",
+          "Level 12": "https://sites.google.com/cendekiamuda.sch.id/pjok10/pjok/level-12",
+        },
+        INFORMATIKA: {
+          "Level 10": "https://sites.google.com/cendekiamuda.sch.id/informatika20262027/level/level-10",
+          "Level 11": "https://sites.google.com/cendekiamuda.sch.id/informatika20262027/level/level-11",
+          "Level 12": "https://sites.google.com/cendekiamuda.sch.id/informatika20262027/level/level-12",
+        },
+        "QUR'ANIC": {
+          "Level 10": "https://sites.google.com/cendekiamuda.sch.id/20262027/quranic-study/level-10",
+          "Level 11": "https://sites.google.com/cendekiamuda.sch.id/20262027/quranic-study/level-11",
+          "Level 12": "https://sites.google.com/cendekiamuda.sch.id/20262027/quranic-study/level-12",
         },
       };
       const classLinks = {
@@ -3484,7 +3504,7 @@
           });
         }
         card.onclick = () => {
-          if (level === "SMP") return;
+          if (level === "SMP" || level === "SMA") return;
           const target =
             (groupName &&
               groupClassLinks[level] &&
